@@ -5,10 +5,13 @@
     <script>
     $('document').ready(function(){
       var _navigator=navigator.userAgent.toLowerCase();
-      //navigator = mozilla/5.0 (windows nt 6.1; wow64) applewebkit/537.36 (khtml, like gecko) chrome/39.0.2171.95 safari/537.36
+      //_navigator = mozilla/5.0 (windows nt 6.1; wow64) applewebkit/537.36 (khtml, like gecko) chrome/39.0.2171.95 safari/537.36
       //splitting the navigator value based on space.
-      _navigator=_navigator.split(' ');
-      $('#BrowserType').text(_navigator[1]);
+      _navigator=_navigator.split('(');
+      //_navigator=["mozilla/5.0 ", "windows nt 6.1; wow64) applewebkit/537.36 ", "khtml, like gecko) chrome/39.0.2171.95 safari/537.36"]
+      var _detail=_navigator[1].split(')');
+      //_detail=windows nt 6.1; wow64 --> this is where your OS comes into picture
+      $('#BrowserType').text(_detail[0]);
     });
     </script>
   </head>
