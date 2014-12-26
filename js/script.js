@@ -37,8 +37,8 @@ function invokeWhatsApp(whatDevice) {
     if(whatDevice!=null)
     {
       $('<a>',{
-      text: 'This is blah',
-      title: 'Blah',
+      text: 'Send Status to WhatsApp',
+      title: 'WhatsApp',
       href: 'whatsapp://send?abid=10&text=Test'
       }).appendTo('body');
     }
