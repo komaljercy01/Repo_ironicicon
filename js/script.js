@@ -40,7 +40,7 @@ function invokeWhatsApp(whatDevice) {
       text: 'Send Status to WhatsApp',
       title: 'WhatsApp',
       //whatsapp://send - send message
-      href: 'whatsapp://send?text='+whatDevice
+      href: 'whatsapp://send?text='+whatDevice+'tel=9786471895'
       }).appendTo('body');
     }
   }
