@@ -21,8 +21,16 @@
       if(typeOfDevice!=null)
       {
         //alert(typeOfDevice);
-        var _mobDevices=['mobile','android','iPhone','iPad'];
-        if(typeOfDevice.indexOf("mobile")>=0)
+        var _mobDevices=['mobile','android','iphone','ipad'];
+        var isMobile="false";
+        $(_mobDevices).each(function(index,value){
+          if(typeOfDevice.indexOf(value))
+          {
+            isMobile="true";
+            break;
+          }
+        });
+        if(isMobile)
         {
           $('#BrowserType').text(typeOfDevice);
         }
