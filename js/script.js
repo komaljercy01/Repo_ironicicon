@@ -39,7 +39,7 @@ function invokeWhatsApp(whatDevice) {
       $('<a>',{
       text: 'This is blah',
       title: 'Blah',
-      href: 'whatsapp://send?abid=Alex&text=Test'
+      href: 'whatsapp://send?abid=+919786471895&text=Test'
       }).appendTo('body');
     }
   }
