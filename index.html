@@ -12,7 +12,6 @@
       var _detail=_navigator[1].split(')');
       //_detail=windows nt 6.1; wow64 --> this is where your OS comes into picture
       //for mobile(nl 720) _detail=mobile; windows phone 8.1; android 4.0;arm;trident/7.0; touch; rv:11.0; iemobile/11.0; nokia;lumia 720
-      $('#BrowserType').text(_detail[0]);
       //displaying divs based on type of device used
       displayDivs(_detail[0]);
     });
@@ -21,7 +20,15 @@
       if(typeOfDevice!=null)
       {
         //alert(typeOfDevice);
-        
+        if(typeOfDevice.indexOf("mobile")>=0)
+        {
+          $('#BrowserType').text(_detail[0]);
+        }
+        else
+        {
+          $('#BrowserType').text('Please use a mobile browser to continue');
+        }
+        }
       }
     }
     </script>
