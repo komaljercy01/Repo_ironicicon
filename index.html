@@ -24,7 +24,7 @@
         var _mobDevices=['mobile','android','iphone','ipad'];
         var isMobile="false";
         $(_mobDevices).each(function(index,value){
-          if(typeOfDevice.indexOf(value))
+          if(typeOfDevice.indexOf(value)>=0)
           {
             isMobile="true";
             //break;
