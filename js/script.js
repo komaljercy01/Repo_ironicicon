@@ -13,6 +13,7 @@ $('document').ready(function() {
 
 function displayDivs(typeOfDevice) {
   if (typeOfDevice != null) {
+    // mobile - windows phone, android - android phones, iphone and iPad
     var _mobDevices = ['mobile', 'android', 'iphone', 'ipad'];
     var isMobile = "false";
     $(_mobDevices).each(function(index, value) {
@@ -32,5 +33,19 @@ function displayDivs(typeOfDevice) {
 }
 
 function invokeWhatsApp(whatDevice) {
-
+  try {
+    if(whatDevice!=null)
+    {
+      $('<a>',{
+      text: 'This is blah',
+      title: 'Blah',
+      href: '#',
+      click: 'whatsapp://send?abid=Alex&text=Test'
+      }).appendTo('body');
+    }
+  }
+  catch(ex)
+  {
+    $('#BrowserType').text(ex.message);
+  }
 }
