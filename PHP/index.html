@@ -28,7 +28,7 @@
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
             <li class="active"><a href="index.html">Home</a></li>
-            <li><a href="#login">Login</a></li>
+            <li><a id="aLogin">Login</a></li>
             <li><a href="Register.html">Register</a></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
@@ -57,7 +57,7 @@
                   <div class="carousel-caption">
                     <h1>Welcome To TheTaco.org</h1>
                     <p>Here you can register as a student, Tutor</p>
-                    <p><a class="btn btn-lg btn-primary" href="#login" role="button">Login Now</a></p>
+                    <p><a class="btn btn-lg btn-primary" href="#login" id="BtnLogin" role="button">Login Now</a></p>
                   </div>
                 </div>
               </div>
@@ -95,6 +95,25 @@
           </div>
         </div>
         <!--end of carousel-->
+        <!--model pop up for login-->
+        <div id="LoginModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel" aria-hidden="true">
+          <div class="modal-header">
+					  <a href="#" class="close" data-dismiss="modal">&times;</a>
+					  <h3>Please enter a new title for this window.</h3>
+					</div>
+				  <div class="modal-body">
+					  <div class="divDialogElements">
+						  <input class="xlarge" id="xlInput" name="xlInput" type="text" />
+						</div>
+					</div>
+				  <div class="modal-footer">
+					  <a href="#" class="btn" onclick="closeDialog ();">Cancel</a>
+					  <a href="#" class="btn btn-primary" onclick="okClicked ();">OK</a>
+					</div>
+			    <div class="divButtons">
+				    <a data-toggle="modal" href="#windowTitleDialog" class="btn btn-primary btn-large">Set Window Title</a>
+				  </div>
+        </div>
       </div>
     </div>
     </div>
