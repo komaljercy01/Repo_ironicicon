@@ -14,7 +14,10 @@ namespace ElanceServiceConsumption.Controllers
         XmlDocument _doc = new XmlDocument();
         public ElanceController()
         {
-            /*_elanceRSSFeedLink = "https://www.elance.com/r/rss/jobs/cat-it-programming";*/
+            //actual URL
+            //_elanceRSSFeedLink = "https://www.elance.com/r/rss/jobs/cat-it-programming";
+            //for test purpose
+            //Any feed link follows RSS XSD
             _elanceRSSFeedLink = @"C:\Users\dell\Documents\Visual Studio 2012\Projects\Elance\ElanceServiceConsumption\ElanceServiceConsumption\Xml\cat-it-programming.xml";
         }
 
@@ -33,11 +36,14 @@ namespace ElanceServiceConsumption.Controllers
                 }
                 #endregion
 
-                #region project titles
+                #region project titles and URLS
+                //get project URL and convert to array
+                string[] _projectLinkURLs = MapXmlListToArray();
                 //getting the list of projects
                 XmlNodeList _projectTitles = _doc.SelectNodes("//rss/channel/item/title");
                 if (_projectTitles != null && _projectTitles.Count > 0)
                 {
+                    int counter=0;
                     ViewBag.ProjectTitles="<ul style=\"list-style-type:none;\">";
                     foreach (XmlNode projectTitle in _projectTitles)
                     {
@@ -45,12 +51,13 @@ namespace ElanceServiceConsumption.Controllers
                         //Looking for a true Computer Programmer/coding for a dating site | Elance Job
                         //Removing " | Elance Job "
                         string splitted = projectTitle.InnerText.Substring(0,projectTitle.InnerText.IndexOf(" | Elance Job"));
-                        ViewBag.ProjectTitles += "<li>" + splitted + "</li><br/>";
+                        //adding HyperLink
+                        ViewBag.ProjectTitles += "<li><a href="+_projectLinkURLs[counter]+" target=\"_blank\">" + splitted + "</a></li><br/>";
+                        counter++;
                     }
                     ViewBag.ProjectTitles += "</ul>";
                 }
                 #endregion
-
                 return View();
             }
             catch (Exception ex)
@@ -59,5 +66,20 @@ namespace ElanceServiceConsumption.Controllers
                 return View("Exception");
             }
         }
+
+        #region mapping XmlList to Array
+        private string[] MapXmlListToArray()
+        {
+            int _arrayLength = 0;
+            XmlNodeList _projectLinkURLs = _doc.SelectNodes("//rss/channel/item/link");
+            string[] _projectLinkURLasArray = new string[_projectLinkURLs.Count];
+            foreach (XmlNode _link in _projectLinkURLs)
+            {
+                _projectLinkURLasArray[_arrayLength] = _link.InnerText;
+                _arrayLength++;
+            }
+            return _projectLinkURLasArray;
+        }
+        #endregion
     }
 }
