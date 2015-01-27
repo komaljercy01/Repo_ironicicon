@@ -1,0 +1,21 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/jquery")
+</head>
+<body>
+    <div class="container">
+        @RenderPage("~/Views/Shared/NavBar.cshtml")
+        <div style="margin-top: 70px;">
+            @RenderBody()
+            <div style="position: absolute; bottom: 0;">
+                @RenderPage("~/Views/Shared/Footer.cshtml")
+            </div>
+        </div>
+    </div>
+</body>
+</html>
