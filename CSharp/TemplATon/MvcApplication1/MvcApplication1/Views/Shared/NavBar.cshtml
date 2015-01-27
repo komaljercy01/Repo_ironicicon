@@ -33,17 +33,8 @@
                         <p>Welcome <a href="Home/User"><b>@Model.username</b></a></p>
                     </li>
                 }
-                <li class="dropdown"><a href="#" data-toggle="dropdown">Hello <?php echo $_SESSION['username'];?><span class="caret"></span></a>
-                    <ul class="dropdown-menu">
-                        <li><a href="User.php"><?php echo $_SESSION['username'];?> HomePage</a></li>
-                        <li><a href="Search.php">Search Pepul/groups</a></li>
-                        <li><a href="Notifications.php">Notifications</a></li>
-                        <li><a href="Messages.php">Direct Messages</a></li>
-                        <li><a href="Logout.php">Logout</a></li>
-                    </ul>
-                </li>
                 <li>
-                    <p>New Users?Register <a href="Register.php"><b>here</b></a></p>
+                    <p>New Users?Register <a href="Home/Register"><b>here</b></a></p>
                 </li>
             </ul>
         </div>
