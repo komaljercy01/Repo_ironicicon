@@ -1,0 +1,154 @@
+Create table F_UserType
+(
+UserType_Id int not null identity(1,1) primary key(UserType_Id),
+UserType_Description varchar(200)
+)
+Go
+insert into F_UserType(UserType_Description) values('Application Admin')
+insert into F_UserType(UserType_Description) values('Consultant Admin')
+insert into F_UserType(UserType_Description) values('Consultant HR')
+insert into F_UserType(UserType_Description) values('Employer Admin')
+insert into F_UserType(UserType_Description) values('Employer Manager')
+insert into F_UserType(UserType_Description) values('Employer HR')
+insert into F_UserType(UserType_Description) values('Job Seeker')
+
+Go
+Create table F_UserStatus
+(
+UserStatus_Id int not null identity(1,1) primary key(UserStatus_Id),
+UserStatus_Description varchar(200)
+)
+Go
+insert into F_UserType(UserType_Description) values('Mobile Verification Pending')
+insert into F_UserType(UserType_Description) values('Mobile Verification Pending' )
+insert into F_UserType(UserType_Description) values('Registration Free Payment Pending' )
+insert into F_UserType(UserType_Description) values('Active User')
+GO
+Create Table F_Gender
+(
+GenderId int not null identity(1,1) primary key(GenderId),
+Gender_Description varchar(25)
+)
+GO
+insert into F_Gender(Gender_Description) values('Male')
+insert into F_Gender(Gender_Description) values('Female')
+GO
+Create Table F_Residency_Status
+(
+Residency_Status_Id int not null identity(1,1) primary key(Residency_Status_Id),
+Residency_Status_Description varchar(200)
+)
+GO
+insert into F_Residency_Status(Residency_Status_Description) values('Citizenship')
+insert into F_Residency_Status(Residency_Status_Description) values('Work Permit')
+insert into F_Residency_Status(Residency_Status_Description) values('S Pass')
+insert into F_Residency_Status(Residency_Status_Description) values('Employment Pass')
+insert into F_Residency_Status(Residency_Status_Description) values('Personalised Employment Pass (PEP)')
+GO
+Create Table F_Job_Preference
+(
+Job_Preference_Id int not null primary key(Job_Preference_Id),
+Job_Preference_Description Varchar(500) 
+)
+GO
+insert into F_Job_Preference(Job_Preference_Description) values('Full Time')
+insert into F_Job_Preference(Job_Preference_Description) values('Part Time')
+
+GO
+Create Table F_Region_Level
+(
+Region_Level_Id int not null identity(1,1) primary key(Region_Level_Id),
+Region_Level_Description varchar(100)
+)
+GO
+insert into F_Region_Level (Region_Level_Description) values('Country')
+insert into F_Region_Level (Region_Level_Description) values('State')
+insert into F_Region_Level (Region_Level_Description) values('City')
+GO
+Create Table M_Region
+(
+RegionId int not null identity(1,1) primary key(RegionId),
+Region_Name Varchar(200),
+Region_Level_Id int References F_Region_Level(Region_Level_Id)
+)
+GO
+insert into M_Region(Region_Name,Region_Level_Id) values('Singapore',1)
+insert into M_Region(Region_Name,Region_Level_Id) values('India',1)
+insert into M_Region(Region_Name,Region_Level_Id) values('China',1)
+insert into M_Region(Region_Name,Region_Level_Id) values('Malaysia',1)
+GO
+Create Table M_Consultant
+(
+Consultant_Id bigint not null identity(1,1) primary key(Consultant_Id),
+Consultant_Name varchar(100),
+Company_Name Varchar(100),
+Office_Address Varchar(max),
+Postal_Code bigint,
+Office_Phone_No Varchar(20),
+MobileNo Varchar(20),
+Email_Id  Varchar(50),
+Fax_No varchar(50),
+Create_By uniqueidentifier,
+Create_On dateTime,
+Modify_By uniqueidentifier,
+Modify_On dateTime
+)
+GO
+/*
+Create Table M_Employer_Company_Profile
+(
+)
+GO
+*/
+Create Table M_Employer 
+(
+Employer_Id bigint not null identity(1,1) primary key(Employer_Id),
+
+)
+Go
+Create Table M_Job_Seeker_Registration
+(
+Job_Seeker_Id Bigint not null identity(1,1) primary key(Job_Seeker_Id),
+FirstName varchar(100) not null,
+LastName varchar(100),
+GenderId int References F_Gender(GenderId),
+DOB datetime,
+NationalityID int References M_Region(RegionId),
+Residency_Status_Id int References F_Residency_Status(Residency_Status_Id),
+NRIC_Code Varchar(20),
+Passport_No Varchar(20),
+PassportIssuePlace Varchar(200),
+Passport_Expire_Date DateTime,
+Residency_Address Varchar(max),
+Postal_Code bigint,
+MobileNo Varchar(20),
+Email_Id  Varchar(50),
+Job_Preference_Id int References F_Job_Preference(Job_Preference_Id),
+Total_Working_Experience int,
+Create_By uniqueidentifier,
+Create_On dateTime,
+Modify_By uniqueidentifier,
+Modify_On dateTime
+)
+GO
+Create table M_CreateUser 
+(
+UserId uniqueidentifier not null primary key(UserId),
+UserName varchar(200),
+UserType int References F_UserType(UserType_Id),
+UserPassword varchar(500),
+UserStatus int References F_UserStatus(UserStatus_Id),
+Consultant_Id Bigint References M_Consultant(Consultant_Id),
+Employer_Id bigint References M_Employer(Employer_Id),
+Job_Seeker_Id bigint References M_Job_Seeker_Registration(Job_Seeker_Id),
+IsActive bit,
+Last_Active_On dateTime,
+IsPassword_Lock bit,
+Failed_Password_Attempt_Count int,
+Last_Failed_Password_Attempt_On dateTime,
+Create_By uniqueidentifier,
+Create_On dateTime,
+Modify_By uniqueidentifier,
+Modify_On dateTime
+
+)
