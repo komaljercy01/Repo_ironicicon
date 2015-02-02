@@ -1,0 +1,66 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ForVijay.SiteMaster" %>
+<!DOCTYPE html>
+<html lang="en">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <script src="scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="scripts/bootstrap.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="Content/bootstrap.min.css"></link>
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+</head>
+<body class="container">
+    <form runat="server">        
+    <nav class="navbar navbar-fixed-top" role="navigation" style="display:block;background-color:#027217;color:white;">
+	<div class="container">
+	<div class="navbar-header">
+		<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="glyphicon glyphicon-arrow-down"></span>
+            <p style="color:white;display:inline;">Menu</p>
+        </button> 
+        <p class="navbar-brand">
+        	U-turn.com 
+        </p>
+    </div>
+	<div class="collapse navbar-collapse" id="collapse">
+		<ul class="nav navbar-nav">
+            <li>
+                <a href="Default.aspx" style="color:white;font-size:18px;">Home</a>
+			</li>
+			<li class="dropdown"><a href="#" style="color:white;font-size:18px;" data-toggle="dropdown">Job Search<span class="caret"></span></a>
+            	<ul class="dropdown-menu" style="background:#027217;">
+                	<li><a href="AdvanceJobSearch.aspx" style="color:#ffffff;font-size:18px;">Advanced Job search</a></li>
+                	<li><a href="JobSearch.aspx?SearchParam=Location" style="color:#ffffff;font-size:18px;">Jobs by location</a></li>
+                    <li><a href="JobSearch.aspx?SearchParam=FunctionalArea" style="color:#ffffff;font-size:18px;">Jobs by Functional Area</a></li>
+                    <li><a href="JobSearch.aspx?SearchParam=Roles" style="color:#ffffff;font-size:18px;">Jobs by Roles</a></li>
+                    <li><a href="JobSearch.aspx?SearchParam=Employers" style="color:#ffffff;font-size:18px;">Jobs by Employers</a></li>
+                    <li><a href="JobSearch.aspx?SearchParam=Sectors" style="color:#ffffff;font-size:18px;">Jobs by Sectors</a></li>
+            	</ul>                    
+        	</li>
+			<li>
+                <a href="UploadResume.aspx" style="color:white;font-size:18px;">Upload resume</a>
+			</li>
+            <li>
+                <a href="EmployerCorner.aspx" style="color:white;font-size:18px;">Employer Corner</a>
+			</li>
+            <li>
+                <a href="Help.aspx" style="color:white;font-size:18px;">Help</a>
+			</li>
+		</ul>
+	</div>
+    </div>
+</nav>
+<!--End of menu-->
+
+        <asp:ContentPlaceHolder ID="BodyDiv" runat="server">
+
+        </asp:ContentPlaceHolder>
+        <asp:ContentPlaceHolder ID="footer" runat="server">
+
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>
