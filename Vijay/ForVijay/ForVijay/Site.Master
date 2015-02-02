@@ -59,7 +59,13 @@
 
         </asp:ContentPlaceHolder>
         <asp:ContentPlaceHolder ID="footer" runat="server">
-
+	<div class="col-lg-12 Footer">
+		<div style="margin-top:2%;">
+			<p class="col-xs-4"></p>
+			<p class="col-xs-4">All Rights Reserved @ ASD Pvt Ltd</p>
+			<p class="col-xs-4"></p>
+		</div>
+	</div>	
         </asp:ContentPlaceHolder>
     </form>
 </body>
