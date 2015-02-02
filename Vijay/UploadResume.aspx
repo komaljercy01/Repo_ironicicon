@@ -59,41 +59,48 @@
 	</div>
 </div>
 <div class="col-lg-12" style="margin-top:20px;">
-	<p style="text-align:left;font-size:16px;"><blockquote>Education Details</blockquote></p>   
-	<div class="col-md-12" style="margin-top:10px;">
-		<div class="col-xs-6">Education Qualification</div>
-		<div class="col-xs-6">Education Qualification Drop Down</div>
+	<p style="text-align:left;font-size:16px;"><blockquote>Education Details</blockquote></p> 
+	<div class="col-md-7">	
+		<div class="col-md-12" style="margin-top:10px;">
+			<div class="col-xs-6">Education Qualification</div>
+			<div class="col-xs-6">Education Qualification Drop Down</div>
+		</div>
+		<div class="col-md-12" style="margin-top:10px;">
+			<div class="col-xs-6">Specialization</div>
+			<div class="col-xs-6">Specialization Drop Down</div>
+		</div>
+		<div class="col-md-12" style="margin-top:10px;">
+			<div class="col-xs-5">Other Skill Certification</div>
+			<div class="col-xs-5 col-xs-offset-1">TextBox &nbsp;&nbsp;&nbsp;<a id="AddCerti"><img src="img\add.png" style="margin-top:-2px;" title="Add Certification" alt="Add Certification"></img></a></div>
+			<!--view-source:http://ironicic.5gbfree.com/Elance/Anto/forgot.php for toggle-->
+		</div>
 	</div>
-	<div class="col-md-12" style="margin-top:10px;">
-		<div class="col-xs-6">Specialization</div>
-		<div class="col-xs-6">Specialization Drop Down</div>
-	</div>
-	<div class="col-md-12" style="margin-top:10px;">
-		<div class="col-xs-5">Other Skill Certification</div>
-		<div class="col-xs-5 col-xs-offset-1">TextBox &nbsp;&nbsp;&nbsp;<a id="AddCerti"><img src="img\add.png" style="margin-top:-2px;" title="Add Certification" alt="Add Certification"></img></a></div>
-		<!--view-source:http://ironicic.5gbfree.com/Elance/Anto/forgot.php for toggle-->
+	<div class = "col-md-5">
+		<img src="img/Head.jpg" height=120 width=80%></img>
 	</div>
 </div>	
 <div class="col-lg-12" style="margin-top:20px;">
-	<p style="text-align:left;font-size:16px;"><blockquote>Current Professional Details</blockquote></p>   
-	<div class="col-md-12" style="margin-top:10px;">
-		<div class="col-xs-6">Job Preference:</div>
-		<div class="col-xs-6">Prefernce Drop Down</div>
+	<p style="text-align:left;font-size:16px;"><blockquote>Current Professional Details</blockquote></p>  
+	<div class="col-md-7">
+		<div class="col-md-12" style="margin-top:10px;">
+			<div class="col-xs-6">Job Preference:</div>
+			<div class="col-xs-6">Prefernce Drop Down</div>
+		</div>
+		<div class="col-md-12" style="margin-top:10px;">
+			<div class="col-xs-6">Total Work Experience</div>
+			<div class="col-xs-6">WorkExp Drop Down</div>
+		</div>
+		<div class="col-md-12" style="margin-top:10px;">
+			<div class="col-xs-6">Job Role</div>
+			<div class="col-xs-6">Job Role txtbox</div>
+		</div>
+		<div class="col-md-12" style="margin-top:10px;">
+			<div class="col-xs-6">Key Skills</div>
+			<div class="col-xs-6">Key Skills txtbox</div>
+		</div>
+		<div class="col-md-12" style="margin-top:10px;">
+			<div class="col-xs-6">Industry</div>
+			<div class="col-xs-6">Industry Skills DropDown</div>
+		</div>
 	</div>
-	<div class="col-md-12" style="margin-top:10px;">
-		<div class="col-xs-6">Total Work Experience</div>
-		<div class="col-xs-6">WorkExp Drop Down</div>
-	</div>
-	<div class="col-md-12" style="margin-top:10px;">
-		<div class="col-xs-6">Job Role</div>
-		<div class="col-xs-6">Job Role txtbox</div>
-	</div>
-	<div class="col-md-12" style="margin-top:10px;">
-		<div class="col-xs-6">Key Skills</div>
-		<div class="col-xs-6">Key Skills txtbox</div>
-	</div>
-	<div class="col-md-12" style="margin-top:10px;">
-		<div class="col-xs-6">Industry</div>
-		<div class="col-xs-6">Industry Skills DropDown</div>
-	</div>
-</div>
+</div>	
