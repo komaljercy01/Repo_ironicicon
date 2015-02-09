@@ -1,0 +1,226 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--include css nd js files-->
+		<script src="js/jquery.min.js" type="text/javascript"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript"></script>
+		<link href='http://fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
+		<link href="css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="css/custom.css" rel="stylesheet"/>
+		<style>
+		a
+		{
+			cursor:pointer;
+		}
+		.transparent-nav-tabs>li.active>a,.transparent-nav-tabs>li.active>a:hover,.transparent-nav-tabs>li.active>a:focus
+		{
+			background-color:transparent !important;
+		}
+		.transparent-nav-tabs>li >a,.transparent-nav-tabs>li >a:hover,.transparent-nav-tabs>li >a:focus
+		{
+			background-color:transparent !important;
+		}
+		.Floatright
+		{
+			float:right !important;
+		}
+		.scroll-area {
+			height: 500px;
+			position: relative;
+			overflow-y: auto !important;
+		}
+		</style>
+		<script type="text/javascript">
+		//this is added for Nav tabs
+			jQuery(document).ready(function ($) {
+				$('#tabs').tab();
+			});
+		</script> 
+	</head>
+	<body class="DancingFont" style="font-size:18px;background-image:url('img/bg.jpg');">
+		<nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="display:block;">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button> 
+					<a class="navbar-brand" href="#">
+						<p style="font-size:32px;">ChocoZone</p>
+					</a>
+				</div>
+				<div class="collapse navbar-collapse" id="collapse" style="height:90px;">
+					<ul class="nav navbar-nav">
+						<li>  <!--add the Styling as chocolate color-->
+							<a href="#" style="color:#592d0d;">Chocolates</a>
+						</li>
+						<li>  <!--add the Styling as chocolate color-->
+							<a href="#" style="color:#592d0d;">About Us</a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav" style="float:right;">
+						<li>  <!--add the Styling as chocolate color-->
+							<a href="#" style="color:#592d0d;">Track Shipment</a>
+						</li>
+						<li>
+							<a href="#" style="color:#2d1606;">Contact Us</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="col-lg-10 col-lg-offset-1 container" style="display:table;height:90%;color:#eee;">
+			<div  style="margin-top:55px;">	
+				<p class="page-header" style="font-size:26px;text-align:center;">Welcome to ChocoZone</p>
+				<div class="row">
+					<div class="col-md-8">
+						<div class="col-md-12">
+							<ul class="nav nav-tabs transparent-nav-tabs" >
+								<li role="presentation" class="active"><a href="#DarkChoco" style="color:#ddd;font-size:0.8em;" data-toggle="tab">Dark</a></li>
+								<li role="presentation"><a href="#MilkChoco" style="color:#ddd;font-size:0.8em;" data-toggle="tab">Milk</a></li>
+							</ul>
+						</div>
+						<div class="tab-content" style="padding:0 15 0 15;">
+							<div id="DarkChoco" class="tab-pane active col-md-12 container scroll-area" style="margin-top:10px;color:#2d1606;background-color:#fff;overflow-y:auto;border: 1px solid #2d1606 ;border-radius: 15px;" >
+							<!-- to be fetched from the backend whose logic will be written later with three per row will do it in PHP later-->
+								<div class="row">
+									<div class="col-md-12" style="margin-top:10px;margin-bottom:10px;">
+										<!--layout : three per row which becomes responsive-->
+										<div class="col-md-4">
+											<div  style="border : 1px solid #aaa;padding:5 5 5 5;border: 1px solid #2d1606 ;border-radius: 10px;">
+												<p style="font-family:calibri;margin-top:1px;" class="page-header"><b>Dark Chocolate 1</b></p>
+												<a href="Choco1.html"><img src="http://photos2.demandstudios.com/DM-Resize/photos.demandstudios.com%2Fgetty%2Farticle%2F3%2F116%2F108494152_XS.jpg?w=400&h=10000&keep_ratio=1" style="margin-top:-15px;" width="100%" title="Dark Chocolate 1"></img></a>
+												<p>Melting Moments</p>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div  style="border : 1px solid #aaa;padding:5 5 5 5;border: 1px solid #2d1606 ;border-radius: 10px;">
+												<p style="font-family:calibri;margin-top:1px;" class="page-header"><b>Dark Chocolate 2</b></p>
+												<a href="Choco1.html"><img src="https://s.yimg.com/ea/img/-/110420/swdarkchoco_16qsjve-16qsk0l.jpg?x=400&q=80&n=1&sig=IkEciO1fPeqY74gkFfi8DA--" style="margin-top:-15px;" width="100%" title="Dark Chocolate 2"></img></a>
+												<p>Find your happiness</p>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div  style="border : 1px solid #aaa;padding:5 5 5 5;border: 1px solid #2d1606 ;border-radius: 10px;">
+												<p style="font-family:calibri;margin-top:1px;" class="page-header"><b>Dark Chocolate 3</b></p>
+												<a href="Choco1.html"><img src="http://indulgy.ccio.co/Z1/iC/xF/195273333812522321q150E3ECc.jpg" style="margin-top:-15px;" width="100%" title="Dark Chocolate 3"></img></a>
+												<p>eat and Loose your brain</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12" style="margin-top:10px;margin-bottom:10px;">
+										<!--layout : three per row which becomes responsive-->
+										<div class="col-md-4">
+											<div  style="border : 1px solid #aaa;padding:5 5 5 5; border: 1px solid #2d1606 ;border-radius: 10px;">
+												<p style="font-family:calibri;margin-top:1px;" class="page-header"><b>Dark Chocolate 1</b></p>
+												<a href="Choco1.html"><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTIDpLC-PEoakQn1iHhk3iE4A7esyAI220PdGdJSKBG14iBNV0Fey2Lsi0" style="margin-top:-15px;" width="100%" title="Dark Chocolate 1"></img></a>
+												<p>Melting Moments</p>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div  style="border : 1px solid #aaa;padding:5 5 5 5; border: 1px solid #2d1606 ;border-radius: 10px;">
+												<p style="font-family:calibri;margin-top:1px;" class="page-header"><b>Dark Chocolate 2</b></p>
+												<a href="Choco1.html"><img src="http://www.ecolechocolat.com/ccmstpl/img/chocolate-making-from-the-bean.jpg" style="margin-top:-15px;" width="100%" title="Dark Chocolate 2"></img></a>
+												<p>Find your happiness</p>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div  style="border : 1px solid #aaa;padding:5 5 5 5; border: 1px solid #2d1606 ;border-radius: 10px;">
+												<p style="font-family:calibri;margin-top:1px;" class="page-header"><b>Dark Chocolate 3</b></p>
+												<a href="Choco1.html"><img src="http://www.ecolechocolat.com/ccmstpl/img/chocolate-quality.jpg" style="margin-top:-15px;" width="100%" title="Dark Chocolate 3"></img></a>
+												<p>eat and Loose your brain</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div id="MilkChoco" class="tab-pane col-md-12 scroll-area" style="margin-top:10px;color:#4E2E28;background-color:#fff;overflow-y:auto;border: 1px solid #4E2E28 ;border-radius: 15px;" >
+								<div class="row">
+									<div class="col-md-12" style="margin-top:10px;margin-bottom:10px;">
+										<!--layout : three per row which becomes responsive-->
+										<div class="col-md-4">
+											<div  style="border : 1px solid #aaa;padding:5 5 5 5; border: 1px solid #4E2E28 ;border-radius: 10px; ">
+												<p style="font-family:calibri;margin-top:1px;" class="page-header"><b>Milk Chocolate 1</b></p>
+												<a href="Choco1.html"><img src="http://www.genaw.com/lowcarb/food_photos/chocolate_coconut_bark.jpg" style="margin-top:-15px;" width="100%" title="Milk Chocolate 1"></img></a>
+												<p>Hand Made</p>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div  style="border : 1px solid #aaa;padding:5 5 5 5; border: 1px solid #4E2E28 ;border-radius: 10px;">
+												<p style="font-family:calibri;margin-top:1px;" class="page-header"><b>Milk Chocolate 2</b></p>
+												<a href="Choco1.html"><img src="http://dev.annieseurobakery.com/wp-content/themes/cleancut/functions/timthumb.php?src=/wp-content/uploads/2012/04/Ind_ChocolateMarquise2.jpg&w=430&h=&zc=2&q=100&f=0" style="margin-top:-15px;" width="100%" title="Milk Chocolate 2"></img></a>
+												<p>Kodaikanal Famous</p>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div  style="border : 1px solid #aaa;padding:5 5 5 5; border: 1px solid #4E2E28 ;border-radius: 10px;">
+												<p style="font-family:calibri;margin-top:1px;" class="page-header"><b>Milk Chocolate 3</b></p>
+												<a href="Choco1.html"><img src="http://t3.gstatic.com/images?q=tbn:ANd9GcSe4hrF23b7ZDyz_1AXHohaxL3MC9V9PuOAfH9Ze7Q-Jn5gawtEeQ" style="margin-top:-15px;" width="100%" title="Milk Chocolate 3"></img></a>
+												<p>America's number 1</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-12" style="margin-top:10px;margin-bottom:10px;">
+										<!--layout : three per row which becomes responsive-->
+										<div class="col-md-4">
+											<div  style="border : 1px solid #aaa;padding:5 5 5 5; border: 1px solid #4E2E28 ;border-radius: 10px;">
+												<p style="font-family:calibri;margin-top:1px;" class="page-header"><b>Milk Chocolate 1</b></p>
+												<a href="Choco1.html"><img src="http://ww2.publix.com/managed_images/sif219708.jpg" style="margin-top:-15px;" width="100%" title="Milk Chocolate 1"></img></a>
+												<p>Loved by children</p>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div  style="border : 1px solid #aaa;padding:5 5 5 5; border: 1px solid #4E2E28 ;border-radius: 10px;">
+												<p style="font-family:calibri;margin-top:1px;" class="page-header"><b>Milk Chocolate 2</b></p>
+												<a href="Choco1.html"><img src="http://www.sustainablelafayette.org/wp-content/uploads/2012/02/fair-trade-chocolate.jpg" style="margin-top:-15px;" width="100%" title="Milk Chocolate 2"></img></a>
+												<p>Rich in Milk protien</p>
+											</div>
+										</div>
+										<div class="col-md-4">
+											<div  style="border : 1px solid #aaa;padding:5 5 5 5; border: 1px solid #4E2E28 ;border-radius: 10px;">
+												<p style="font-family:calibri;margin-top:1px;" class="page-header"><b>Milk Chocolate 3</b></p>
+												<a href="Choco1.html"><img src="https://farm6.staticflickr.com/5554/14265462401_7ee540c890_o.jpg" style="margin-top:-15px;" width="100%" title="Milk Chocolate 3"></img></a>
+												<p>Rich in Almond</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="col-md-12">
+							<ul class="nav nav-tabs transparent-nav-tabs col-md-12" style="padding-right: 0 !important"; >
+								<li role="presentation" class="active Floatright"><a href="#Feedback"  style="color:#ddd;font-size:0.8em;float:right; !important" data-toggle="tab">Feedback</a></li>
+								<li role="presentation" class="Floatright"><a href="#Stuff2" style="color:#ddd;font-size:0.8em;" data-toggle="tab">Heading</a></li>
+							</ul>
+						</div>
+						<div class="tab-content" style="padding:0 15 0 15;">
+							<div id="Feedback" class="tab-pane active col-xs-12" style="margin-top:10px;color:#2d1606;background-color:#fff;" >
+								<p>poda</p>
+							</div>
+							<div id="Stuff2" class="tab-pane col-xs-12" style="margin-top:10px;background-color:#fff;" >
+								<p>poda</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-lg-12 Footer" style="color:#eee;">
+			<div style="margin-top:2%;">
+				<p class="col-xs-4"></p>
+				<p class="col-xs-4 col-md-offset-1" style="font-size:20px;">Developed by footer</p>
+				<p class="col-xs-4"></p>
+			</div>
+		</div>
+	</body>
+</html>
