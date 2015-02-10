@@ -1,0 +1,215 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--include css nd js files-->
+		<!--<script src="js/jquery.min.js" type="text/javascript"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript"></script>-->
+		<!--<link href="css/bootstrap.min.css" rel="stylesheet"/>
+		<link href="css/custom.css" rel="stylesheet"/>-->
+		<script src="js/jquery.min.js" type="text/javascript"></script>
+		<script src="js/bootstrap.min.js" type="text/javascript"></script>-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js" type="text/javascript"></script>
+		<script src="http://getbootstrap.com/dist/js/bootstrap.min.js" type="text/javascript"></script>
+		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet"/>
+		<link href='http://fonts.googleapis.com/css?family=Dancing+Script:700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+		
+		<style>
+		.DancingFont
+		{
+			font-family: 'Dancing Script', cursive;
+		}
+		.OldStandard
+		{
+			font-family: 'Lato', sans-serif;
+		}
+		a
+		{
+			cursor:pointer;
+		}
+		.transparent-nav-tabs>li.active>a,.transparent-nav-tabs>li.active>a:hover,.transparent-nav-tabs>li.active>a:focus
+		{
+			background-color:transparent !important;
+		}
+		.transparent-nav-tabs>li >a,.transparent-nav-tabs>li >a:hover,.transparent-nav-tabs>li >a:focus
+		{
+			background-color:transparent !important;
+		}
+		.Floatright
+		{
+			float:right !important;
+		}
+		.scroll-area {
+			height: 500px;
+			position: relative;
+			overflow-y: auto !important;
+		}
+		.add,.remove
+		{
+			display:inline;
+		}
+		</style>
+		<script type="text/javascript">
+			jQuery(document).ready(function ($) {
+				//variable declaration
+				var rowNum=0;
+				//functions
+				//this is added for Nav tabs
+				//
+				$('#tabs').tab();
+				//
+				//dynamically creating Rows
+				//
+				$('#add').click(function(){
+					rowNum++;
+					var row='<div id="row'+rowNum+'" style="margin-top:5px;" ><b>Select your quantity :</b><div> <select name ="quantity[]" class="quantityDropDown" id="quanDD'+rowNum+'" name="quantity"><option value="">Select</option><option value="0.25">250 Gms</option><option value="0.50">500 Gms</option><option value="1">1 Kg</option></select>&nbsp;<input type="text" class="countTbx" id="count'+rowNum+'" placeholder="count" style="height:20px;width:30%;"></input><span class="glyphicon glyphicon-Minus" style="display:inline;" onclick="removeRow('+rowNum+');"></span></div></div>';
+					jQuery('#quantityDiv').append(row);
+				});
+				//
+				//Computing the value after clicking Compute Count
+				//
+				$('#ComputeCount').click(function()
+				{
+					ComputeCount(rowNum);
+				});
+			});
+			//- sign removing the row
+			function removeRow(rowNumber)
+			{
+				$('#TotalPrice').text("Recalculate Again");
+				jQuery('#row'+rowNumber).remove();
+				ComputeCount(rowNumber-1);
+			}
+			//Logic to Compute the total price and update that in the TotalPrice ID
+			function ComputeCount(rowNum)
+			{
+				$('#TotalPrice').text("");
+				var totalPrice=getTotalPriceFromDiv();
+				var pricePerKilo=$('#ppk').text();
+				for(var i=0;i<=rowNum;i++)
+				{
+					totalPrice+=($('#quanDD'+i).val()*$('#count'+i).val())*pricePerKilo;
+				}
+				$('#TotalPrice').text(totalPrice);
+			}
+			function getTotalPriceFromDiv()
+			{
+				if(
+				($('#TotalPrice').text()!="") && (!isNaN($('#TotalPrice').text()))
+				)
+				{
+					return $('#TotalPrice').text();
+				}
+				else
+				{
+					return 0;
+				}
+			}
+		</script> 
+	</head>
+	<body  style="font-size:18px;">
+		<nav class="navbar navbar-default navbar-fixed-top DancingFont" role="navigation" style="display:block;">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button> 
+					<a class="navbar-brand" href="#">
+						<p style="font-size:32px;">ChocoZone</p>
+					</a>
+				</div>
+				<div class="collapse navbar-collapse" id="collapse" style="height:90px;">
+					<ul class="nav navbar-nav">
+						<li>  <!--add the Styling as chocolate color-->
+							<a href="#" style="color:#592d0d;">Chocolates</a>
+						</li>
+						<li>  <!--add the Styling as chocolate color-->
+							<a href="#" style="color:#592d0d;">About Us</a>
+						</li>
+					</ul>
+					<ul class="nav navbar-nav" style="float:right;">
+						<li>  <!--add the Styling as chocolate color-->
+							<a href="#" style="color:#592d0d;">Track Shipment</a>
+						</li>
+						<li>
+							<a href="#" style="color:#2d1606;">Contact Us</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div class="col-lg-10 col-lg-offset-1 container OldStandard" style="display:table;height:90%;margin-top:35px;">
+			<div class="col-md-5" style="margin-top:75px;">
+				<div id="myCarousel"  class="carousel slide" data-ride="carousel">
+					<!-- Carousel indicators -->
+					<ol class="carousel-indicators">
+						<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+						<li data-target="#myCarousel" data-slide-to="1"></li>
+						<li data-target="#myCarousel" data-slide-to="2"></li>
+					</ol>   
+					<!-- Carousel items -->
+					<div class="carousel-inner">
+						<div class="item active">
+							<img src="images/milk5.jpg" style="width:100%;">
+						</div>
+						<div class="item">
+							<img src="images/milk6.jpg" style="width:100%;" >
+						</div>
+						<div class="item">
+							<img src="images/milk4.jpg" style="width:100%;">
+						</div>
+					</div>
+					<!-- Carousel nav -->
+					<a class="carousel-control left" href="#myCarousel" data-slide="prev">
+						<span class="glyphicon glyphicon-chevron-left"></span>
+					</a>
+					<a class="carousel-control right" href="#myCarousel" data-slide="next">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
+			</div>
+			<div class="col-md-7">
+				<p class="page-header">Milk Chocolate</p>
+				<div class="col-xs-12">					
+					<ul style="font-size:13px;">
+						<li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus venenatis dui sed iaculis mattis. Ut vulputate, metus fermentum condimentum ornare, nulla leo elementum libero, et varius nisi augue quis orci. Vestibulum et vestibulum felis. Proin quis interdum libero, ut viverra est.</li>
+						<br>
+						<li>Point 2: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus venenatis dui sed iaculis mattis. Ut vulputate, metus fermentum condimentum ornare, nulla leo elementum libero, et varius nisi augue quis orci. Vestibulum et vestibulum felis. Proin quis interdum libero, ut viverra est.</li>
+						<br>
+						<p><blockquote style="font-size:13px;background-color:yellow;"><b>Price Per Kilo : </b><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSSyN7ihnRO2HyvKKZqg-CrE53LhUuv0pTCCXoqPcfxVADr_81u" height="18px"></img>&nbsp;<span id="ppk">500</span></blockquote></p>
+						<div class="col-md-12">
+							<div class="col-xs-8"  id="quantityDiv" >
+								<b>Select your quantity : </b>
+								<div>
+									<select class="quantityDropDown" id="quanDD0" name ="quantity[]" >
+										<option value="">Select</option><option value="0.25">250 Gms</option><option value="0.50">500 Gms</option><option value="1">1 Kg</option>
+									</select>
+									<input type="text" class="countTbx" name="count[]" id="count0" placeholder="count" style="height:20px;width:30%;"></input>
+									<div id="add" class="add"><span  class="glyphicon glyphicon-plus"></span></div>
+								</div>
+								<!-- <div style="margin-bottom:13px;"></div> -->
+							</div>
+							<div class="col-xs-4" style="border:1px #000 solid;border-radius:10px;">
+								<h4 align="center">Total price </h4>
+								<hr style="margin-top:-7px;">
+								<p style="font-size:20px;text-align:center;margin-top:-15px;display:inline;">
+									<img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSSyN7ihnRO2HyvKKZqg-CrE53LhUuv0pTCCXoqPcfxVADr_81u" height="18px"></img>
+									<p id="TotalPrice" style="display:inline;font-size:20px;margin-top:-15px;"></p>
+								</p>
+								<a id="ComputeCount" class="btn btn-primary" style="background-color:transparent !important;color:#000;border:#000 1px solid;width:100%;margin-bottom:10px;">Compute Price</a>
+							</div>
+						</div>
+					</ul>
+				</div>
+			</div>
+			<!-- <div class="col-md-12" style="margin-top:-18px;">
+				<p class="page-header" style="text-align:left;font-size:18px;">Some Suggestions for you</p>
+			</div> -->
+		</div>
+	</body>
+</html>
