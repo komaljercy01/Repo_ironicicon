@@ -1,0 +1,38 @@
+﻿body {
+	margin-bottom: 50px;
+	font-family:'Segoe UI';
+}
+.footer {
+    width: 80%;
+    height: 60px;
+    background-color: #ffffff;
+}
+#HomePage {
+	display:table;
+	padding:30px 50px 30px 30px;
+	background-image : url("../images/1.jpg") !important;
+	background-attachment: fixed !important;
+	background-position: center; 
+	height:100%;
+	width:100%;
+	margin-top:50px;
+}
+/* padded section */
+.pad-section {
+  padding: 100px 0;
+}
+.pad-section img {
+  width: 100%;
+}
+#third {
+	display:table;margin-top:10px;width:100%;height:100% !important;background:url('../../img/3.jpg') no-repeat center center fixed  ;background-size:cover;
+}
+#navs>a {
+	margin:3px 3px 3px 3px;
+	color:#f00;
+}
+
+ul.operatorsListCls > li >a.hover {
+		background-color:#444 !important;
+		color:#000 !important;
+}
