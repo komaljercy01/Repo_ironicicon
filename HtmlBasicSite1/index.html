@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
@@ -6,7 +6,7 @@
     <script src="scripts/angular.min.js"></script>
     <script src="scripts/bootstrap.js"></script>
     <link href="styles/bootstrap.css" rel="stylesheet" />
-    <link href="styles/custom.css" rel="stylesheet" />    
+    <link href="styles/custom.css" rel="stylesheet" />   
 </head>
 <body>
     <!--Nav bar-->
@@ -33,22 +33,21 @@
     </nav>
     <!--end of navbar-->
     <!--Main App-->
-    <div ng-app>
+    <div ng-app="RechargeApp">
         <div id="HomePage">
-            <div class="container">
+            <div class="container  col-lg-12">
                 <div class="col-lg-6" style="background:#333; opacity:0.8;margin-top:15%;padding-bottom:30px;">
-                    <div class="col-lg-12" style="margin-top:3%">
+                    <div class="col-md-12" style="margin-top:3%">
                         <label class="col-md-4" for="Mob" style="color:#fff;padding-top:8px;text-align:right;">Mobile Number</label>
-                        <input class="col-md-8" id="Mob" type="text" placeholder="Enter your Phone number (9876543210) No +91" required maxlength="10" style="height:40px;" />
+                        <input class="col-md-8" id="Mob" type="text" placeholder="Enter your Phone number (9876543210) No +91" required maxlength="10" style="height:40px;width:66%;" />
                     </div>
-                    <div class="col-lg-12" style="margin-top:3%">
-                        <span class="col-md-4" style="padding-top:8px;text-align:right;color:#fff;"><b>Mobile Operator</b></span>
-                        <div  class="col-md-8" id="operator" style="background:#fff;border:1px solid #000;display:inline;margin-top:10px;height :50px!important;text-align:right;vertical-align:middle;padding-top:10px;">
+                    <div class="col-md-12" style="margin-top:2%">
+                        <span class="col-md-4" style="padding-top:15px;text-align:right;color:#fff;"><b>Mobile Operator</b></span>
+                        <div  class="col-md-8" id="operator" style="background:#fff;border:1px solid #000;margin-top:20px;height :40px!important;text-align:right;vertical-align:middle;padding-top:10px;width:66%;">
                             <!-- Have to include an image drop down-->
-                            <span id="OperatorImage"></span>
                             <p id="OperatorText" style="display:inline;color:#000;text-align:right !important;">Select your operator</p>
-                            <span id="ddID" class="glyphicon glyphicon-chevron-down" style="display:inline;" ></span>
-                            <div id="operatorsList" style="height:180px;overflow-y:auto;margin-left:-15px;margin-top:10px;display:none;width:110%;opacity:1.0 !important;background:#fff;">
+                            <span id="ddID" class="glyphicon glyphicon-chevron-down" style="display:inline;" ></span><br />
+                            <div id="operatorsList" style="height:180px;overflow-y:auto;margin-left:-15px;margin-top:10px;display:none;width:109%;opacity:1.0 !important;background:#fff;">
                                 <ul class="operatorsListCls" style="list-style:none;background:#eee;padding-right:10px;text-align:left !important;">
                                     <li class="fortyPx col-md-6" style="text-align:left;" id="vodafone"><a style="text-decoration: none;vertical-align:text-bottom;width:100%;"><img src="images\Vodafone.jpg" style="margin-top:3px;" />&nbsp;&nbsp;&nbsp;&nbsp; Vodafone</a></li>
                                     <li class="fortyPx col-md-6" id="Airtel"><a style="text-decoration: none;vertical-align:text-bottom;width:100%;"><img src="images\Airtel.jpg" style="margin-top:3px;" />&nbsp;&nbsp;&nbsp;&nbsp; Airtel</a></li>
@@ -56,11 +55,27 @@
                                     <li class="fortyPx col-md-6" id="Idea"><a style="text-decoration: none;vertical-align:text-bottom;"><img src="images\Idea.jpg" style="margin-top:3px;" />&nbsp;&nbsp;&nbsp;&nbsp; Idea</a></li>
                                     <li class="fortyPx col-md-6" id="BSNL"><a style="text-decoration: none;vertical-align:text-bottom;"><img src="images\BSNL.jpg" style="margin-top:3px;" />&nbsp;&nbsp;&nbsp;&nbsp; BSNL</a></li>
                                     <li class="fortyPx col-md-6" id="MTS"><a style="text-decoration: none;vertical-align:text-bottom;"><img src="images\MTS.jpg" style="margin-top:3px;" />&nbsp;&nbsp;&nbsp;&nbsp; MTS</a></li>
-                                    <li class="fortyPx col-md-6" id="Tata Docomo"><a style="text-decoration: none;vertical-align:text-bottom;"><img src="images\Docomo.jpg" style="margin-top:3px;" />&nbsp;&nbsp;&nbsp;&nbsp; Docomo</a></li>
+                                    <li class="fortyPx col-md-6" id="Docomo"><a style="text-decoration: none;vertical-align:text-bottom;"><img src="images\Docomo.jpg" style="margin-top:3px;" />&nbsp;&nbsp;&nbsp;&nbsp; Docomo</a></li>
                                     <li class="fortyPx col-md-6" id="Reliance"><a style="text-decoration: none;vertical-align:text-bottom;"><img src="images\Reliance.jpg" style="margin-top:3px;" />&nbsp;&nbsp;&nbsp;&nbsp; Reliance</a></li>
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:4%">
+                        <label class="col-md-4" for="Amount" style="color:#fff;padding-top:8px;text-align:right;">Recharge amount</label>
+                        <input class="col-md-8" id="Amount" type="text" placeholder="Enter Recharge amount from 10 to 1000" required maxlength="10" style="height:40px;width:66%;" />
+                        <!--<p id="lineBreak" style="display:none;">&nbsp;</p>-->
+                    </div>
+                    <div class="col-md-offset-2 col-md-10" style="margin-top:4%">
+                        <button type="submit" id="Submit" class="btn btn-default" style="width:100%;color:#fff;background:transparent !important;">Proceed to payment</button>
+                    </div>
+                </div>
+                <div class="col-lg-6" style="margin-top:15%;padding-bottom:30px;opacity : 0.8; background:#eee;">
+                    <div id="rechargeOffers" ng-controller="RechargeOffersController" style="margin-top:5px;">
+                        <p style="font-family:Calibri;" ng-repeat="operator in Operators">
+                                {{operator}}
+                        </p>
+                        {{selectedValue}}
                     </div>
                 </div>
             </div>
@@ -71,6 +86,8 @@
         $(document).ready(function () {
             $('#ddID').click(function () {
                 $('#operatorsList').toggle();
+                $('#Amount').toggle();
+                $('#Submit').toggle();//hiding the Amount text box field since it is overlapping the operators Div
                 $('ul.operatorsListCls > li').click(function (e) {
                     //e.currentTarget.id - holds the ID of the current actionlistner
                     if (e.currentTarget != null && e.currentTarget.id != null) {
@@ -80,9 +97,22 @@
             });
         });
         function populateOperatorDiv(mobileOperator) {
-            $('#OperatorText').html('<img src="images/'+mobileOperator+'.jpg" style="margin-top:-5px;"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style="display:inline;font-size:16px;">'+mobileOperator+'</p>');
+            $('#OperatorText').html('<img src="images/' + mobileOperator + '.jpg" style="margin-top:-5px;"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style="display:inline;font-size:16px;">' + mobileOperator + '</p>');
             $('#operatorsList').hide();
+            $('#Amount').show(); //showing the textbox once the user has selected the value
+            $('#Submit').show();
         }
+        //Main Angular App
+        var angularApp = angular.module('RechargeApp', ['RechargeOffers']); //dependency injection
+ 
+        //region RechargeOffers
+        var RechargeOffers = angular.module('RechargeOffers', []);
+        RechargeOffers.controller('RechargeOffersController', function ($scope) {
+            $scope.Operators = ['Vodafone', 'Idea', 'Airtel', 'Aircel', 'Docomo', 'BSNL', 'MTS'],
+            $scope.selectedValue = angular.element('#OperatorText')[0].innerText
+            //Initially selectedValue will be "Select your operator"
+
+        });
     </script>
 </body>
 </html>
