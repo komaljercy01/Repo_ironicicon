@@ -49,7 +49,7 @@
                             <span id="ddID" class="glyphicon glyphicon-chevron-down" style="display:inline;" ></span><br />
                             <div id="operatorsList" style="height:180px;overflow-y:auto;margin-left:-15px;margin-top:10px;display:none;width:109%;opacity:1.0 !important;background:#fff;">
                                 <ul class="operatorsListCls" style="list-style:none;background:#eee;padding-right:10px;text-align:left !important;">
-                                    <li class="fortyPx col-md-6" style="text-align:left;" id="vodafone"><a style="text-decoration: none;vertical-align:text-bottom;width:100%;"><img src="images\Vodafone.jpg" style="margin-top:3px;" />&nbsp;&nbsp;&nbsp;&nbsp; Vodafone</a></li>
+                                    <li class="fortyPx col-md-6" style="text-align:left;" id="Vodafone"><a style="text-decoration: none;vertical-align:text-bottom;width:100%;"><img src="images\Vodafone.jpg" style="margin-top:3px;" />&nbsp;&nbsp;&nbsp;&nbsp; Vodafone</a></li>
                                     <li class="fortyPx col-md-6" id="Airtel"><a style="text-decoration: none;vertical-align:text-bottom;width:100%;"><img src="images\Airtel.jpg" style="margin-top:3px;" />&nbsp;&nbsp;&nbsp;&nbsp; Airtel</a></li>
                                     <li class="fortyPx col-md-6" id="Aircel"><a style="text-decoration: none;vertical-align:text-bottom;width:100%;"><img src="images\Aircel.jpg" style="margin-top:3px;" />&nbsp;&nbsp;&nbsp;&nbsp; Aircel</a></li>
                                     <li class="fortyPx col-md-6" id="Idea"><a style="text-decoration: none;vertical-align:text-bottom;"><img src="images\Idea.jpg" style="margin-top:3px;" />&nbsp;&nbsp;&nbsp;&nbsp; Idea</a></li>
@@ -72,10 +72,7 @@
                 </div>
                 <div class="col-lg-6" style="margin-top:15%;padding-bottom:30px;opacity : 0.8; background:#eee;">
                     <div id="rechargeOffers" ng-controller="RechargeOffersController" style="margin-top:5px;">
-                        <p style="font-family:Calibri;" ng-repeat="operator in Operators">
-                                {{operator}}
-                        </p>
-                        {{selectedValue}}
+                        {{OffersDiv($('#SelectedOperator').text())}}
                     </div>
                 </div>
             </div>
@@ -97,10 +94,14 @@
             });
         });
         function populateOperatorDiv(mobileOperator) {
-            $('#OperatorText').html('<img src="images/' + mobileOperator + '.jpg" style="margin-top:-5px;"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p style="display:inline;font-size:16px;">' + mobileOperator + '</p>');
+            $('#OperatorText').html('<img src="images/' + mobileOperator + '.jpg" style="margin-top:-5px;"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p id="SelectedOperator" style="display:inline;font-size:16px;">' + mobileOperator + '</p>');
             $('#operatorsList').hide();
             $('#Amount').show(); //showing the textbox once the user has selected the value
             $('#Submit').show();
+            //checking if the user has selected an operator and then populating the div
+            if (document.getElementById('SelectedOperator') != null && document.getElementById('SelectedOperator').innerText != null) {
+                $('#rechargeOffers').text(angular.element(document.getElementById('SelectedOperator')).scope().$$childHead.OffersDiv(document.getElementById('SelectedOperator').innerText));
+            }
         }
         //Main Angular App
         var angularApp = angular.module('RechargeApp', ['RechargeOffers']); //dependency injection
@@ -108,10 +109,25 @@
         //region RechargeOffers
         var RechargeOffers = angular.module('RechargeOffers', []);
         RechargeOffers.controller('RechargeOffersController', function ($scope) {
-            $scope.Operators = ['Vodafone', 'Idea', 'Airtel', 'Aircel', 'Docomo', 'BSNL', 'MTS'],
-            $scope.selectedValue = angular.element('#OperatorText')[0].innerText
-            //Initially selectedValue will be "Select your operator"
-
+            $scope.OffersDiv = function (offerDivValue) {
+                switch (offerDivValue) {
+                    case "Vodafone":
+                        return "Vodafone is selected";
+                        break;
+                    case "Airtel":
+                        return "Airtel is selected";
+                        break;
+                    case "Aircel":
+                        return "Aircel is selected";
+                        break;
+                    case "BSNL":
+                        return "BSNL is selected";
+                        break;
+                    default:
+                        return "Select an operator from Drop down to find the offers";
+                        break;
+                }
+            };
         });
     </script>
 </body>
