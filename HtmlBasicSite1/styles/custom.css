@@ -18,6 +18,18 @@
 	margin-top:50px;
 	padding-bottom:22% /*placeholder for full image to be shown TO BE changed later*/;
 }
+
+#PaymentPage {
+	display:table;
+	padding:30px 50px 30px 30px;
+	background-image : url("../images/2.jpg") !important;
+	background-attachment: fixed !important;
+	background-position: center; 
+	height:100%;
+	width:100%;
+	padding-bottom:22% /*placeholder for full image to be shown TO BE changed later*/;
+}
+
 /* padded section */
 .pad-section {
   padding: 100px 0;
