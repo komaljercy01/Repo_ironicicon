@@ -1,0 +1,23 @@
+﻿body {
+	margin-bottom: 50px;
+	font-family:'Segoe UI';
+}
+.footer {
+    width: 80%;
+    height: 60px;
+    background-color: #ffffff;
+}
+
+
+/* padded section */
+.pad-section {
+  padding: 100px 0;
+}
+.pad-section img {
+  width: 100%;
+}
+
+#navs>a {
+	margin:3px 3px 3px 3px;
+	color:#f00;
+}
