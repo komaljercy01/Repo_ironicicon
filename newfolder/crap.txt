@@ -1,0 +1,7 @@
+point 1: Fix Float bar - the link is escortphonesearch.com/atlanta-escort-phone-numbers/ ? -- > need little more clarity on this... are you talking about the left side ads? and are these to be replaced only in browsecities.aspx page alone?
+
+Point 2: No of days : 90 --> will do it...
+
+Point 3: replace Photo1(backpage image link) with the images from the folder (from the "numbers" folder) . Scope of this work? (which page must i do?)
+
+Use Random Photos from 1.jpg to 289.jpg - > where this must be done? 
