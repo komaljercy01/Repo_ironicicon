@@ -123,6 +123,7 @@ if(isset($_POST['postValue']))
 					while($row2=mysql_fetch_array($TotalCallsMadeResult))
 					{
 						$b=$row2['sum(duration)'];
+						$a=$row2['count(localParty)'];
 					}
 				}
 				if(isset($results) && mysql_num_rows($results)>0)
@@ -134,7 +135,7 @@ if(isset($_POST['postValue']))
 						<?php
 						while($row = mysql_fetch_array($results))
 						{
-							$a=$row['COUNT(localParty)'];
+							
 							if($a==0 || $b==0)
 							{
 								?>
@@ -155,7 +156,7 @@ if(isset($_POST['postValue']))
 								$c=$b/$a;
 								echo "<div class='col-md-4 col-md-offset-2' style='border : 1px #000 solid;background : #eee;'>";
 								echo "<p style='font-weight:normal !important;margin-top:10px;padding-left:20px;'> User: ".$row['localParty'] ."<br/> ";
-								echo "Total Calls Made: ".$a. " <br/>";
+								echo "Total Calls Made: ".$row['COUNT(localParty)']. " <br/>";
 								echo "Total time spent: ".round($row['SUM(duration)'] /60)."  min (between the date range) <br/>";
 								echo "Average Call duration: ".round($c/60)."  min</p><br/>";
 								echo "</div>";
