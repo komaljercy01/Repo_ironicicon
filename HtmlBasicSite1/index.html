@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title></title>
@@ -7,6 +7,7 @@
     <script src="scripts/bootstrap.js"></script>
     <link href="styles/bootstrap.css" rel="stylesheet" />
     <link href="styles/custom.css" rel="stylesheet" />
+	<script src="scripts/custom.js"></script>
 </head>
 <body>
     <!--Nav bar-->
@@ -75,7 +76,7 @@
                         <input class="col-md-8" id="Amount" type="text" placeholder="Enter Recharge amount from 10 to 1000" required maxlength="10" style="height: 40px; width: 66%;" />
                         <!--<p id="lineBreak" style="display:none;">&nbsp;</p>-->
                     </div>
-                    <div ng-controller="RechargeOffersController" class="col-md-offset-2 col-md-10" style="margin-top: 4%">
+                    <div  class="col-md-offset-2 col-md-10" style="margin-top: 4%" ng-controller="RechargeOffersController">
                         <button type="submit" id="Submit" class="btn btn-default" style="width: 100%; color: #fff; background: transparent !important;" ng-click="proceedToNextPage()">Proceed to payment</button>
                     </div>
                 </div>
@@ -86,73 +87,13 @@
                 </div>
             </div>
         </div>
-        <div id="PaymentPage" ng-controller="RechargeOffersController" ng-show="Parameters">
+        <div id="PaymentPage" ng-controller="RechargeOffersController1" ng-show="Parameters">
             <div class="col-lg-12" style="color:white;">
                 <blockquote>Save trees Use ePayment ;)</blockquote>
             </div>
         </div>
     </div>
     <!--end of main App-->
-    <script>
-        $(document).ready(function () {
-            $('#ddID').click(function () {
-                $('#operatorsList').toggle();
-                $('#Amount').toggle();
-                $('#Submit').toggle();//hiding the Amount text box field since it is overlapping the operators Div
-                $('ul.operatorsListCls > li').click(function (e) {
-                    //e.currentTarget.id - holds the ID of the current actionlistner
-                    if (e.currentTarget != null && e.currentTarget.id != null) {
-                        populateOperatorDiv(e.currentTarget.id);
-                    }
-                });
-            });
-        });
-        function populateOperatorDiv(mobileOperator) {
-            $('#OperatorText').html('<img src="images/' + mobileOperator + '.jpg" style="margin-top:-5px;"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<p id="SelectedOperator" style="display:inline;font-size:16px;">' + mobileOperator + '</p>');
-            $('#operatorsList').hide();
-            $('#Amount').show(); //showing the textbox once the user has selected the value
-            $('#Submit').show();
-            //checking if the user has selected an operator and then populating the div
-            if (document.getElementById('SelectedOperator') != null && document.getElementById('SelectedOperator').innerHTML != null) {
-                $('#rechargeOffers').text(angular.element(document.getElementById('SelectedOperator')).scope().$$childHead.OffersDiv(document.getElementById('SelectedOperator').innerText));
-            }
-        }
-        //Main Angular App
-        var angularApp = angular.module('RechargeApp', ['RechargeOffers']); //dependency injection
 
-        //region RechargeOffers
-        var RechargeOffers = angular.module('RechargeOffers', []);
-        RechargeOffers.controller('RechargeOffersController', function ($scope) {
-            $scope.OffersDiv = function (offerDivValue) {
-                //have topups alone as of now... value can be populated from freecharge site
-                switch (offerDivValue) {
-                    case "Vodafone":
-                        return "Vodafone is selected";
-                        break;
-                    case "Airtel":
-                        return "Airtel is selected";
-                        break;
-                    case "Aircel":
-                        return "Aircel is selected";
-                        break;
-                    case "BSNL":
-                        return "BSNL is selected";
-                        break;
-                    default:
-                        return "Select an operator from Drop down to find the offers";
-                        break;
-                }
-            },
-            $scope.proceedToNextPage = function () {
-                debugger;
-                var CustomerParameters = new Object();
-                CustomerParameters.MobileNumber = $('#Mob').val();
-                CustomerParameters.Amount = $('#Amount').val();
-                CustomerParameters.Operator = $('#SelectedOperator')[0].innerText;
-                $scope.Parameters = JSON.stringify(CustomerParameters);
-                alert($scope.Parameters);
-            };
-        });
-    </script>
 </body>
 </html>
