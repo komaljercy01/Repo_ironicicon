@@ -6,8 +6,10 @@
   <script src="https://code.jquery.com/jquery-2.1.3.min.js" ></script>
   <script>
   function signinCallback(authResult) {
+  	debugger;
 	  if (authResult['status']['signed_in']) {
-	  	//do changes here
+	  	$('#innerText').css('display','block');
+	  	$('#innerText').text(authResult);
 	  } else {
 	    console.log('Sign-in state: ' + authResult['error']);
 	  }
@@ -17,7 +19,8 @@
 <body>
 	<button id="googleBtn" type="button" class="btn btn-default">Sign in with google</button>
 	<span id="signinButton">
-  <span class="g-signin" data-callback="signinCallback" data-clientid="427706567624-3703g0qh407erst5apjl0017vdu46edr" data-cookiepolicy="single_host_origin" data-requestvisibleactions="http://schema.org/AddAction" data-scope="https://www.googleapis.com/auth/plus.login">  </span>
-    </span>
+		<span class="g-signin" data-callback="signinCallback" data-clientid="427706567624-3703g0qh407erst5apjl0017vdu46edr" data-cookiepolicy="single_host_origin" data-requestvisibleactions="http://schema.org/AddAction" data-scope="https://www.googleapis.com/auth/plus.login">  </span>
+	</span>
+	<span id="innerText" style="display:none;"></span>
 </body>
 </html>
