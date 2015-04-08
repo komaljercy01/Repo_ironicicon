@@ -1,38 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Poda</title>
+  <title>Google Login</title>
   <script src="https://plus.google.com/js/client:platform.js" async defer></script>
   <script src="https://code.jquery.com/jquery-2.1.3.min.js" ></script>
   <script>
   function signinCallback(authResult) {
-  if (authResult['status']['signed_in']) {
-    // Update the app to reflect a signed in user
-    // Hide the sign-in button now that the user is authorized, for example:
-    document.getElementById('signinButton').setAttribute('style', 'display: none');
-  } else {
-    // Update the app to reflect a signed out user
-    // Possible error values:
-    //   "user_signed_out" - User is signed-out
-    //   "access_denied" - User denied access to your app
-    //   "immediate_failed" - Could not automatically log in the user
-    console.log('Sign-in state: ' + authResult['error']);
-  }
-}
+	  if (authResult['status']['signed_in']) {
+	  	//do changes here
+	  } else {
+	    console.log('Sign-in state: ' + authResult['error']);
+	  }
+	}
   </script>
-  <!--<meta name="google-signin-client_id" content="427706567624-3703g0qh407erst5apjl0017vdu46edr   WqDfWehi7wAKiLjxdJgnpPVm"></meta>-->
 </head>
 <body>
 	<button id="googleBtn" type="button" class="btn btn-default">Sign in with google</button>
 	<span id="signinButton">
-  <span
-    class="g-signin"
-    data-callback="signinCallback"
-    data-clientid="427706567624-3703g0qh407erst5apjl0017vdu46edr"
-    data-cookiepolicy="single_host_origin"
-    data-requestvisibleactions="http://schema.org/AddAction"
-    data-scope="https://www.googleapis.com/auth/plus.login">
-  </span>
-</span>
+  <span class="g-signin" data-callback="signinCallback" data-clientid="427706567624-3703g0qh407erst5apjl0017vdu46edr" data-cookiepolicy="single_host_origin" data-requestvisibleactions="http://schema.org/AddAction" data-scope="https://www.googleapis.com/auth/plus.login">  </span>
+    </span>
 </body>
 </html>
