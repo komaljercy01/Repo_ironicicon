@@ -2,18 +2,20 @@
 <html>
 <head>
   <title>Google Login</title>
-  <script src="https://plus.google.com/js/client:platform.js"></script>
+  <script src="https://plus.google.com/js/client:platform.js" async defer></script>
   <script src="https://code.jquery.com/jquery-2.1.3.min.js" ></script>
   <script>
-  
-  gapi.client.load('oauth2', 'v2', function() {
-		gapi.client.oauth2.userinfo.get().execute(function(resp) {
-    	var userEmail=resp.email;
-    	$('#innerText').html(resp.email);
-    	//adding a new button whose onclick fetches the mails
-    	$('#FetchEmailsBtn').css('display','block');
-  	})
-	});
+  $(document).ready(function()){
+  	gapi.client.load('oauth2', 'v2', function() {
+			gapi.client.oauth2.userinfo.get().execute(function(resp) {
+    		var userEmail=resp.email;
+    		//$('#innerText').html(resp.email);
+    		alert(resp.email);
+    		//adding a new button whose onclick fetches the mails
+    		$('#FetchEmailsBtn').css('display','block');
+  		})
+		});
+  });
 	function signinCallback(authResult) {
 	  //adding this function so that something can be added in future
 	}
