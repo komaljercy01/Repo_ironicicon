@@ -5,8 +5,16 @@
   <script src="https://plus.google.com/js/client:platform.js" async defer></script>
   <script src="https://code.jquery.com/jquery-2.1.3.min.js" ></script>
   <script>
-  $(document).ready(function(){
-  	gapi.client.load('oauth2', 'v2', function() {
+	function signinCallback(authResult) {
+	  //adding this function so that something can be added in future
+	   if (authResult['status']['signed_in']) {
+     	APICall();
+     } else {
+      console.log('Sign-in state: ' + authResult['error']);
+     }
+	}
+	function APICall(){
+		gapi.client.load('oauth2', 'v2', function() {
 			gapi.client.oauth2.userinfo.get().execute(function(resp) {
     		var userEmail=resp.email;
     		//$('#innerText').html(resp.email);
@@ -15,9 +23,6 @@
     		$('#FetchEmailsBtn').css('display','block');
   		})
 		});
-  });
-	function signinCallback(authResult) {
-	  //adding this function so that something can be added in future
 	}
   </script>
 </head>
