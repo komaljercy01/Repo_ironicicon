@@ -12,7 +12,7 @@
 		if (authResult['status']['signed_in']) {
 			$('#signinButton').hide();
 	     		APICall();
-	     		_accessToken=authResult['accesstoken'];
+	     		_accessToken=authResult['access_token'];
 		} else {
 			$('#signinButton').show();
 			console.log('Sign-in state: ' + authResult['error']);
@@ -28,8 +28,8 @@
   			})
 		});
 	}
-	$('#FetchEmailsBtn').click(function(e){
-		alert(e);
+	$('#FetchEmailsBtn').click(function(){
+		alert(_accessToken);
 	});
   </script>
 </head>
