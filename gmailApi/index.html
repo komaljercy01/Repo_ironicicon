@@ -10,9 +10,11 @@
 	function signinCallback(authResult) {
 	  //adding this function so that something can be added in future
 		if (authResult['status']['signed_in']) {
+			$('#signinButton').hide();
 	     		APICall();
 	     		_accessToken=authResult['accesstoken'];
 		} else {
+			$('#signinButton').show();
 			console.log('Sign-in state: ' + authResult['error']);
 		}
 	}
@@ -26,6 +28,10 @@
   			})
 		});
 	}
+	$('#FetchEmailsBtn').click(function(e){
+		alert(e);
+	}
+	});
   </script>
 </head>
 <body>
