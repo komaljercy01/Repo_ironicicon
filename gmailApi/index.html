@@ -9,7 +9,9 @@
   gapi.client.load('oauth2', 'v2', function() {
 		gapi.client.oauth2.userinfo.get().execute(function(resp) {
     	userEmail=resp.email;
-    	$('#innerText').text(resp.email);
+    	$('#innerText').html(resp.email);
+    	//adding a new button whose onclick fetches the mails
+    	$('#FetchEmailsBtn').css('display','block');
   	})
 	});
 	function signinCallback(authResult) {
@@ -22,5 +24,6 @@
 		<span class="g-signin" data-callback="signinCallback" data-clientid="427706567624-3703g0qh407erst5apjl0017vdu46edr" data-cookiepolicy="single_host_origin" data-requestvisibleactions="http://schema.org/AddAction" data-scope="https://www.googleapis.com/auth/plus.login https://www.googleapis.com/auth/userinfo.email">  </span>
 	</span>
 	<span id="innerText"></span>
+	<button id="FetchEmailsBtn" style="display:none;">Fetch Emails</button>
 </body>
 </html>
