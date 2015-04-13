@@ -5,11 +5,19 @@
   <script src="https://plus.google.com/js/client:platform.js" async defer></script>
   <script src="https://code.jquery.com/jquery-2.1.3.min.js" ></script>
   <script>
-  function signinCallback(authResult) {
-	  if (authResult['status']['signed_in']) {
-	  	$('#innerText').text(authResult);
-	  } 
-	}
+  gapi.client.load('oauth2', 'v2', function() {
+  gapi.client.oauth2.userinfo.get().execute(function(resp) {
+    // Shows user email
+    console.log(resp.email);
+  })
+});
+
+gapi.client.load('plus', 'v1', function() {
+  gapi.client.plus.people.get( {'userId' : 'me'} ).execute(function(resp) {
+    // Shows profile information
+    console.log(resp);
+  })
+});
   </script>
 </head>
 <body>
