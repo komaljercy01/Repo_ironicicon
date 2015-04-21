@@ -86,4 +86,8 @@ Each set should have 6 unique categories.  Please don't repeat the same category
 The only thing that matters the most is accurate spelling, punctuation, grammar, accurate questions/answers, and have fun with them.
 
 thanks!
+<<<<<<< HEAD
 tom
+=======
+tom
+>>>>>>> origin/gh-pages
