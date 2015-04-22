@@ -1,0 +1,250 @@
+<?php 
+session_start();
+?><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add Vendor Payments</title>
+
+<link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap-theme.min.css">
+<link rel="stylesheet" href="http://getbootstrap.com/dist/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css"> -->
+<!-- <link rel="stylesheet" href="http://bootsnipp.com/css/bootsnipp.min.css?ver=42f321feccec9b5774d234a7ace874c2"> -->
+<script src="http://getbootstrap.com/dist/js/jquery.min.js"></script>
+<script src="http://getbootstrap.com/dist/js/bootstrap.min.js"></script> 
+<!-- <script src="//oss.maxcdn.com/jquery.bootstrapvalidator/0.5.3/js/bootstrapValidator.min.js"></script> -->
+
+          <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    	<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script>
+    	<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.2.0/respond.js"></script>
+    <![endif]-->
+    <style type="text/css">
+/* Adjust feedback icon position */
+#addVendor .form-control-feedback {
+    right: 15px;
+}
+#addVendor .selectContainer .form-control-feedback {
+    right: 25px;
+}
+</style>
+
+
+</head>   
+<script type="text/javascript">
+function submitform()
+{
+    document.forms["logout"].submit();
+}
+</script>
+
+        
+<form action="logout.php" method="post" name="logout" class="style3" id="logout">    
+<table border="0" align="right" class="style3">
+      <tr>
+        <td>You are logged in as:</td>
+        <td><?php echo $adminusername; ?></td>
+      </tr>
+      <tr>
+        <td height="34">
+
+<a href="javascript: submitform()" class="style2"> Click here to Logout</a></td>
+      </tr>
+    </table></form>
+    
+
+<table width="100%" border="0">
+
+  <tr>
+    <td align="left"><a href="Controlpanel.php" title="Control Panel" >Home</a>  </td>
+  </tr>
+</table>
+<body>
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-1">
+      <form class="form-horizontal" role="form" action="addvendorpayment1Submit.php" method="post" id="addVendor">
+        <fieldset>
+
+          <!-- Form Name -->
+          <legend>Add Vendor Payment</legend>
+
+           <!-- Text input-->
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">Vendor Name</label>
+            <div class="col-sm-4">
+              <input type="text" placeholder="" class="form-control" name="vname" id="vname" value="<?php echo $VendorName; ?>" readonly >
+            </div>
+
+            <label class="col-sm-2 control-label" for="textinput">Vendor Number</label>
+            <div class="col-sm-4">
+              <input type="text" placeholder="" class="form-control" name="vnumber" id="vnumber" value="<?php echo $vid_get; ?>" readonly>
+            </div>
+          </div>
+
+         
+
+          
+ <input type="hidden"    name="vid" id="vid"     value="<?php echo $vid_get;?>" >
+
+   <!-- drop down  input-->
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">Cash Account </label>
+            <div class="col-sm-4">
+              <input type="text" placeholder="" class="form-control" name="cash" id="cash" value="34" readonly >
+            </div>
+          </div>
+         <!-- Text input-->
+          
+           <!-- Text input-->
+          <div class="form-group">
+            <label class="col-sm-2 control-label" for="textinput">Cheque Number</label>
+            <div class="col-sm-4">
+              <input type="text" placeholder="" class="form-control" name="VchequeNo" id="VchequeNo" value="<?php echo $VchequeNo; ?>">
+            </div>
+
+            <label class="col-sm-2 control-label" for="textinput">Cheque Date</label>
+            <div class="col-sm-4">
+              <input type="text" placeholder="" class="form-control" name="Date" id="Date" value="<?php echo $date; ?>">
+            </div>
+          </div>
+             <!-- Text input-->
+          <div class="form-group">
+           
+
+            <label class="col-sm-2 control-label" for="textinput">Cheque Amount</label>
+            <div class="col-sm-4">
+              <input type="text" placeholder="" class="form-control" name="Date" id="Date" value="<?php echo $date; ?>">
+            </div>
+          </div>
+
+
+
+             <div class="form-group">
+             <label class="col-sm-2 control-label" for="textinput">Total Amount</label>
+            <div class="col-sm-8">
+              <input type="text" placeholder="" class="form-control" name="TAmount" id="TAmount" value="Cheque Amount - All Discounts + ALL Subtotals , Must match Cheque amount" readonly>
+            </div>
+          </div>    
+
+    <div id="container">
+    <div id="demo">
+<table id="example" class="display" cellspacing="1" width="100%">
+    <thead>
+        <tr>
+            <th >Bill ID</th>
+              <th >Due Date</th>
+                <th >Total</th>
+                <th > Previous Payments</th>
+                <th >Amt Due </th>
+                  <th >Payment Amount</th>
+                   <th >Discount</th>
+                    <th >Account</th>
+                     <th >-</th>
+          </tr>
+    </thead>
+    <tbody>
+<tr>
+<td>1 </td>
+<td>4/22/2015 </td>
+
+<td>100</td>
+<td> Total Amt previous bills   </td>
+<td>  = Total - previous Payments </td>
+
+<td><input type='text' id='Amount1' name='Amount1'>  </td>     
+<td> <input type='text' id='dscount1' name='dscount1'> </td>
+<td> <select id='discountAcct1' name='discountAcct1'>
+<option value='15'>15</option>
+<option value='23'>23</option>
+</select>
+</td>
+<td>  <input type='checkbox' id='Billid1' name='enable' onclick="toggleControl(this,1)"> </td>
+</tr> 
+<tr>
+<td>2 </td>
+<td>5/25/2013 </td>
+
+<td>400</td>
+<td> Total Amt previous bills   </td>
+<td>  = Total - previous Payments </td>
+
+<td><input type='text' id="Amount2" name='Amount2'>  </td>     
+<td> <input type='text' id="dscount2" name='dscount2'> </td>
+<td> <select id="discountAcct2" name='discountAcct2'>
+<option value='15'>15</option>
+<option value='23'>23</option>
+</select>
+</td>
+<td>  <input type='checkbox' id='Billid2' name='enable' onclick="toggleControl(this,2)"> </td>
+</tr> 
+
+
+    </tbody>
+ <input type='hidden' id='testValue' name='testValue' value='3'>   
+</table>
+
+
+</div>
+</div>
+
+
+         <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+              <div class="pull-right"> </div>
+            </div>
+      </div>
+         <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+              <div class="pull-right"> </div>
+            </div>
+      </div>
+         <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-8">
+              <div class="pull-right"> </div>
+            </div>
+      </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <div class="pull-right">
+
+                <button type="submit" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-primary">Save</button>
+              </div>
+            </div>
+      </div>
+        </fieldset>
+      </form>
+    </div><!-- /.col-lg-12 -->
+</div><!-- /.row -->
+<script>
+	$(document).ready(function(){
+		var totalValue=$('#testValue').val();
+		for(var val=1;val<totalValue;val++)
+		{
+			$('#Amount'+val).attr('disabled',true);
+			$('#dscount'+val).attr('disabled',true);
+			$('#discountAcct'+val).attr('disabled',true);
+		}
+	});
+	function toggleControl(control,counter)
+	{
+		var checkbox=$('#'+control.id);
+		if(checkbox[0].checked)
+		{
+			$('#Amount'+counter).attr('disabled',false);
+			$('#dscount'+counter).attr('disabled',false);
+			$('#discountAcct'+counter).attr('disabled',false);
+		}
+		else
+		{
+			$('#Amount'+counter).attr('disabled',true);
+			$('#dscount'+counter).attr('disabled',true);
+			$('#discountAcct'+counter).attr('disabled',true);
+		}
+	}
+</script>
+
+</body>
+</html>                                		
