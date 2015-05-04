@@ -1,0 +1,4 @@
+C:\Users\dell\Documents\Visual Studio 2012\Projects\RESTfulTutorial\mvcTutorialBundles\Event\Event\bin\Event.dll
+C:\Users\dell\Documents\Visual Studio 2012\Projects\RESTfulTutorial\mvcTutorialBundles\Event\Event\bin\Event.pdb
+C:\Users\dell\Documents\Visual Studio 2012\Projects\RESTfulTutorial\mvcTutorialBundles\Event\Event\obj\Release\Event.dll
+C:\Users\dell\Documents\Visual Studio 2012\Projects\RESTfulTutorial\mvcTutorialBundles\Event\Event\obj\Release\Event.pdb
