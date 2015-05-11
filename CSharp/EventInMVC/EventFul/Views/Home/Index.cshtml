@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+@model EventFul.Models.Model
+@{
+    if (Session["CategoriesModel"] != null)
+    {
+        EventFul.Models.Model _model = (EventFul.Models.Model)Session["CategoriesModel"];
+        if (_model.IsCategoriesFetched)
+        {
+            <div id="postLogin">
+            @if (!_model.IsEventsFetched)
+            {   
+                using (Html.BeginForm("FetchEvents", "Home", FormMethod.Post))
+                {
+                    <select name="CategoryList">
+                        @foreach (var select in _model.CategoryList)
+                        {
+                            <option value=@select.Value>@select.Text</option>
+                        }
+                    </select>
+                    @Html.EditorFor(x => x.StartDate)
+                    @Html.EditorFor(x => x.EndDate)
+                    <input type="submit" value="fetch Events" />
+                }
+            }
+            else
+            {
+                <div id="Events">
+                    @foreach (var _event in _model.Events)
+                        {
+                            <div style="border:1px solid black;margin-left:10%;margin-top:30px;padding:5px;font-family:Segoe UI;font-size:14px;max-width:300px;">
+                                <h3>@_event.Title</h3>
+                                <hr />
+                                <a href="@_event.EventURL">Link</a>
+                                <p>@MvcHtmlString.Create(_event.Description)</p>
+                                <p>Time : @_event.StartDate</p>
+                                <div style="padding:2px;border:1px solid grey;font-size:12px;">
+                                    <p>Venue: @_event.Venue.VenueName <a href="@_event.Venue.VenueURL">(@_event.Venue.VenueID)</a></p>
+                                    <p>Venue Address :</p>
+                                    <div style="font-size:10px;margin-top:-3px;"> 
+                                        @_event.Venue.VenueAddress.Street ,<br />
+                                        @_event.Venue.VenueAddress.City , @_event.Venue.VenueAddress.Region <br />
+                                        @_event.Venue.VenueAddress.
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                </div>
+            }
+            </div>
+        }
+    }
+    else
+    {
+        using (Html.BeginForm("FetchCategories", "Home", FormMethod.Post))
+        {
+    <input type="submit" value="Login into Eventful" />
+    <input type="hidden" name="isButtonClicked" value="true" />
+        }
+    }
+}
