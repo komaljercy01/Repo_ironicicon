@@ -1,0 +1,37 @@
+<html>
+<head>
+	<script type="text/javascript" src="jquery.js"></script>
+	<script>
+	var oneDay=86400000;
+	var StartDateAsEpoch=Date.parse(((new Date()).toString()).substr(4,11));
+	var EndDateAsEpoch=Date.parse(((new Date()).toString()).substr(4,11))+oneDay;
+		$(document).ready(function(){	
+			$('.Airport').click(function(e){
+				getFlights(e.currentTarget.id,StartDateAsEpoch,EndDateAsEpoch);
+			});
+		});
+		function getFlights(FlightCode,Start,End)
+		{
+			$.ajax({
+				url:'http://flightxml.flightaware.com/json/FlightXML2/AirlineFlightSchedules' ,
+				data:{origin:FlightCode,startDate:Start,endDate:End},
+				type:"Get",
+				beforeSend: function(xhr) {
+					xhr.setRequestHeader("Authorization", "Basic " + btoa("paymydelay" + ":" + "4a95c5007a175610cfc4550a4d02a7c244b6cee8")); 	
+				},
+				success:function(msg){
+					alert(msg);
+				}
+			});
+		}
+	</script>
+</head>
+<body>
+	<div class="Airport" id="KFKJ">
+	kaka
+	</div>
+	<div class="Airport" id="CHN">
+	CHN
+	</div>
+</body>
+</html>
