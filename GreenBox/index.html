@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://raw.githubusercontent.com/ksivasenthil/GreenBox/master/Main/Solution/Site/Scripts/jquery-1.11.1.min.js"></script>
+    <script src="https://raw.githubusercontent.com/ksivasenthil/GreenBox/master/Main/Solution/Site/Scripts/html5shiv.js"></script>
+    <link href="Style/bootstrap.min.css" rel="stylesheet" />
+    <link href="Style/Styles.css" rel="stylesheet" />
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script src="https://raw.githubusercontent.com/ksivasenthil/GreenBox/master/Main/Solution/Site/Scripts/json2xml.js"></script>
+    <script src="Scripts/mustache.min.js" type="text/javascript"></script>
+    <script src="Scripts/ApiCaller.js" type="text/javascript"></script>
+    <script src="https://raw.githubusercontent.com/ksivasenthil/GreenBox/master/Main/Solution/Site/Scripts/respond.min.js"></script>
+    <script src="https://raw.githubusercontent.com/ksivasenthil/GreenBox/master/Main/Solution/Site/Scripts/bootstrap.min.js"></script>
+    <script type="text/javascript">
+
+        var directionsDisplay;
+        var directionsService = new google.maps.DirectionsService();
+        var map;
+        var totalCO2 = 0;
+        var emissionValue = 0;
+        var directions = "";
+        var individualLeg = [];
+
+        function initialize() {
+            directionsDisplay = new google.maps.DirectionsRenderer();
+            var chennai = new google.maps.LatLng(13.850033, 80.6500523);
+            var mapOptions = {
+                zoom: 7,
+                center: chennai
+            };
+            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+            directionsDisplay.setMap(map);
+            directionsDisplay.setPanel(document.getElementById('directions'));
+            document.getElementById('init').innerHTML = "<blockquote>Please enter Start location and end location</blockquote>";
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+        function codeAddress() {
+            var from = document.getElementById("StartLocation").value;
+            var to = document.getElementById("Endlocation").value;
+            PlotPoints(from, to);
+            document.getElementById('init').innerHTML = "<blockquote>From :<b>" + from + "</b> to:<b>" + to + "</b></blockquote>";
+        }
+
+        function PlotPoints(from, to) {
+            var request = {
+                origin: from,
+                destination: to,
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+            var instructions;
+            directionsService.route(request, function (result, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    directions = JSON.stringify(result.routes[0].legs[0]);
+                    var obj = JSON.stringify(result.routes[0].legs[0]);
+                    var parsedJson = $.parseJSON(obj);
+                    var legDistance = [];
+                    $.each(parsedJson, function (index, value) {
+                        if (index == "steps") {
+                            $.each(value, function (index, value1) {
+                                value1.instructions = "<div style=\"navigationInstructions col-sm-4\">" + value1.instructions + "</div>";
+                                legDistance[index] = value1.distance["text"];
+                            });
+                        }
+                    });
+                    getCO2Emissions(result, $('#svt').val(), legDistance);
+                }
+            });
+        }
+
+        //total distance, from, to, leg distance, type, subtype
+        function getCO2Emissions(result, vehicleSubType, legDistance) {
+            var _multiplicationFactor = 1;
+            var _newArray = "";
+            var _test = legDistance.join();
+            _test = _test.replace(/ /g, ',');
+            _test = _test.split(",");
+            $.each(_test, function (index, value) {
+                if (index % 2 == 0) {
+                    if (_test[index + 1] == "m") {
+                        _multiplicationFactor = 0.001;
+                    } else if (_test[index + 1] == "km") {
+                        _multiplicationFactor = 1;
+                    }
+                    _newArray += value * _multiplicationFactor + "~";
+                }
+            });
+            $.when(
+                pageDataHandler.gb(result, _newArray, vehicleSubType, successCallback)).done(function (val) {
+                    emissionValue = val;
+                });
+			}
+
+        function successCallback(result, ServerResponse) {
+            var distances = [];
+            distances = ServerResponse;
+            directions = JSON.stringify(result.routes[0].legs[0]);
+            var obj = JSON.stringify(result.routes[0].legs[0]);
+            var parsedJson = $.parseJSON(obj);
+            var legDistance = [];
+            $.each(parsedJson, function (index, value) {
+                if (index == "steps") {
+                    $.each(value, function (index1, value1) {
+						if(value1.instructions.length>100)
+						{
+							//trimming the contents if greater than 100 Characters
+							var value=value1.instructions;	
+							var res = value.replace(/"/gi, '&quot;');
+							res=res.replace(/</gi, '&lt;');
+							res=res.replace(/>/gi, '&gt;'); 
+							console.log("1:"+res);
+							var individualInstruction=value1.instructions.substring(0,100)+	'<a onclick=poda('+res+'); type="button" class="trimmed" >Read More</a>';
+							console.log("2:"+res);
+							value1.instructions = "<div class=\"navigationInstructions col-md-10 col-xs-offset-1\" >" + individualInstruction + "</div>";
+							result.routes[0].legs[0].steps[index1].instructions = "<div class=\"circleForSteps\"><b>" + parseFloat(distances[index1]).toFixed(2) + "</b></div>" + value1.instructions;
+							totalCO2 = parseFloat(totalCO2) + parseFloat(parseFloat(distances[index1]).toFixed(2));
+						}
+						else
+						{
+								value1.instructions = "<div class=\"navigationInstructions col-md-10 col-xs-offset-1\">" + value1.instructions + "</div>";
+							result.routes[0].legs[0].steps[index1].instructions = "<div class=\"circleForSteps\"><b>" + parseFloat(distances[index1]).toFixed(2) + "</b></div>" + value1.instructions;
+							totalCO2 = parseFloat(totalCO2) + parseFloat(parseFloat(distances[index1]).toFixed(2));
+						}
+                    });
+                }
+            });
+            document.getElementById('TotalCO2').innerHTML = parseFloat(totalCO2).toFixed(2);
+            directionsDisplay.setDirections(result);
+            totalCO2 = 0;
+        }
+        function ServiceSucceeded(msg) {
+            alert(msg);
+        }
+		function poda(res)
+		{
+			alert('poda');
+		}
+    </script>
+    <title>Green Zone</title>
+</head>
+<body class="container-fluid" style="font-family: Segoe UI;">
+    <div class="col-lg-12">
+        <!-- header-->
+        <p style="font-size: 36px; padding-left: 1%; color: green;"><b>Green Box</b></p>
+        <div class="row">
+            <!--Input comes here-->
+            <div class="col-md-2 verticalMargins">
+                <input type="text" id="StartLocation" name="StartLocation" placeholder="Start Location" class="useFullWidth" />
+            </div>
+            <div class="col-md-2 verticalMargins">
+                <input type="text" id="Endlocation" name="EndLocation" placeholder="End Location" class="useFullWidth" />
+            </div>
+            <div class="col-md-2 verticalMargins">
+                <select id="vt" class="useFullWidth"></select>
+            </div>
+            <div class="col-md-2 verticalMargins">
+                <select id="svt" class="useFullWidth"></select>
+            </div>
+            <div class="col-md-2 verticalMargins">
+                <button type="submit" class="btn btn-default btn-primary" onclick="codeAddress();">Calculate</button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2 verticalMargins">
+                <div class="circle" title="Predicted CO2 Emission in your Travel"><span id="TotalCO2"></span></div>
+            </div>
+        </div>
+        <!--To Do Add borders-->
+        <div class="row verticalMargins">
+            <!-- Div for Maps-->
+            <div class="col-md-4">
+                <div id="map-canvas" class="mapStyle">&nbsp;</div>
+            </div>
+            <div class="col-md-6">
+                <!-- directions steps-->
+                <div class="col-xs-12">
+
+                    <p id="init" style="font-size: 12px; margin-top: 5px;">
+                        <!-- from and to-->
+                        <b><span id="spnFrom"></span></b><b><span id="spnEnd"></span></b>
+                    </p>
+                </div>
+                <div id="directions" class="col-xs-12" style="font-family: Calibri;">
+                    <!-- this will be repeated based on number of Legs taken from the service-->
+                    <!-- tip : use for each above here or use a jquery to populate the div (use (#directions))-->
+                    <!--<div class="col-xs-12">
+                        <div style="font-size:16px;">
+                            Leg 1 : <b>CO2 Emitted : 3kg</b>
+                        </div>
+                        <div style="font-size:13px;">
+                            Leg Starting Place
+                        </div>
+                        <div style="font-size:13px;">
+                            Leg Ending Place
+                        </div>
+                        <div style="font-size:16px;">
+                            Leg 2 : <b>CO2 Emitted : 2kg</b>
+                        </div>
+                        <div style="font-size:13px;">
+                            Leg Starting Place
+                        </div>
+                        <div style="font-size:13px;">
+                            Leg Ending Place
+                        </div>
+                        <div style="font-size:16px;">
+                            Leg 3 : <b>CO2 Emitted : 1kg</b>
+                        </div>
+                        <div style="font-size:13px;">
+                            Leg Starting Place
+                        </div>
+                        <div style="font-size:13px;">
+                            Leg Ending Place
+                        </div>
+                    </div>-->
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="optionsTemplate" class="hideTemplate">
+        {{#options}}
+        <option value="{{key}}">{{text}}</option>
+        {{/options}}
+    </div>
+</body>
+</html>
