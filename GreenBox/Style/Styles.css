@@ -1,0 +1,107 @@
+@media screen and (max-width: 320px) {
+    #map-canvas {
+        height: 380px;
+    }
+
+    #directions {
+        height: 300px;
+        overflow: auto;
+    }
+}
+
+@media screen and (min-width: 321px) and (max-width:767px) {
+    #map-canvas {
+        height: 480px;
+    }
+
+    #directions {
+        height: 400px;
+        overflow: auto;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width:991px) {
+    #map-canvas {
+        height: 480px;
+    }
+
+    #directions {
+        height: 400px;
+        overflow: auto;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width:1023px) {
+    #map-canvas {
+        height: 480px;
+    }
+
+    #directions {
+        height: 400px;
+        overflow: auto;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #map-canvas {
+        height: 480px;
+    }
+
+    #directions {
+        height: 400px;
+        overflow: auto;
+    }
+}
+
+.circle {
+    width: 50px;
+    height: 50px;
+    /*border: solid 1px red;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;*/
+    background-image: url("../images/transparent.png");
+    background-size: 50px 50px;
+    vertical-align: central;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.circleForSteps {
+    float: left !important;
+    width: 60px;
+    height: 60px;
+    /*border: solid 1px red;
+    -moz-border-radius: 25px;
+    -webkit-border-radius: 25px;
+    border-radius: 25px;*/
+    background-image: url("../images/transparent.png");
+    background-size: 60px 60px;
+    vertical-align: central;
+    text-align: center;
+    padding-top: 18px;
+}
+
+.hideTemplate {
+    display: none;
+}
+
+.verticalMargins {
+    margin-top: 3px;
+    vertical-align: middle;
+}
+
+.useFullWidth {
+    width: 100%;
+}
+
+.mapStyle {
+    background-color: lightgray;
+    width: 97%;
+    border: dotted 1px groove black;
+}
+
+.navigationInstructions {
+    margin-left: 6px;
+    display: block;
+}
