@@ -10,14 +10,14 @@ MainApp.config(function ($routeProvider) {
             templateUrl: 'templates/AboutUs.html',
             controller: 'AboutUsController'
         })
-        .when('/Login', {
+        /*.when('/Login', {
             templateUrl: 'templates/Login.html',
             controller: 'LoginController'
         })
         .when('/ContactUs', {
             templateUrl: 'templates/ContactUs.html',
             controller: 'ContactUsController'
-        })
+        })*/
         //.otherwise({
         //    redirectTo: '/Home'
         //});
