@@ -1,5 +1,5 @@
 var controllers=angular.module('MainApp.controllers',[]);
-    controllers.controller('HomeController', function ($scope) {
+    controllers.controller('HomeController', function ($scope,$sce) {
             //$sce.trustAsHtml -- Render HTML String
             $scope.Message = $sce.trustAsHtml("Welcome To <b>EScript</b>");
     });
