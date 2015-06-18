@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Basic WebSite</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <!--Vendor Script-->
+    <script src="scripts/Vendor/jquery.min.js"></script>
+    <script src="scripts/Vendor/bootstrap.min.js"></script>
+    <script src="scripts/Vendor/angular.min.js"></script>
+    <!--End of Vendor Script-->
+    <!--Main App-->
+    <script src="scripts/App.js"></script>
+    <!--Controller JS-->
+    <script src="scripts/Controllers/Controller.js"></script>
+    <!--Style sheets import-->
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/custom.css"/>
+</head>
+<body ng-app="MainApp" style="font-family:Segoe UI;">
+    <!-- head menu bar-->
+    <div class="container" ng-controller="HomeController">
+        <h2>{{Message}}</h2>
+    </div>
+    <!--footer-->
+</body>
+</html>
