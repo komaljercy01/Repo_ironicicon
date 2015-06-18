@@ -23,10 +23,3 @@ MainApp.config(function ($routeProvider) {
         //});
 });
 
-/*MainApp.controller('HomeController', function ($scope) {
-        $scope.Message = "Welcome To EScript";
-    });
-
-MainApp.controller('AboutUsController', function ($scope) {
-    $scope.Message = "Welcome To About Us Page";
-});*/
