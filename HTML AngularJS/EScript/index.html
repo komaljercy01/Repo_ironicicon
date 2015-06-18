@@ -2,26 +2,35 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Basic WebSite</title>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/> 
-    <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!--Vendor Script-->
     <script src="scripts/Vendor/jquery.min.js"></script>
     <script src="scripts/Vendor/bootstrap.min.js"></script>
     <script src="scripts/Vendor/angular.min.js"></script>
+    <script src="scripts/Vendor/angular-route.min.js"></script>
     <!--End of Vendor Script-->
     <!--Main App-->
     <script src="scripts/App.js"></script>
     <!--Controller JS-->
-    <script src="scripts/Controllers/Controller.js"></script>
+    <!--<script src="scripts/Controllers/Controller.js"></script>-->
     <!--Style sheets import-->
-    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css"/>
-    <link rel="stylesheet" type="text/css" href="styles/custom.css"/>
+    <link rel="stylesheet" type="text/css" href="styles/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="styles/custom.css" />
 </head>
-<body ng-app="MainApp" style="font-family:Segoe UI;">
+<body ng-app="MainApp" style="font-family: Segoe UI;">
     <!-- head menu bar-->
-    <div class="container" ng-controller="HomeController">
-        <h2>{{Message}}</h2>
+    <div class="container">
+        <div class="col-md-3" style="margin-top: 10px;">
+            <ul class="nav" style="position: fixed; border: 3px #000 solid; width: 10%;">
+                <li><a href="#Home">Home </a></li>
+                <li><a href="#AboutUs">Who we are</a></li>
+            </ul>
+        </div>
+        <div class="col-md-9">
+            <div ng-view></div>
+        </div>
     </div>
     <!--footer-->
 </body>
