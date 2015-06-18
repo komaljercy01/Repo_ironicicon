@@ -1,6 +1,6 @@
-var controllers=angular.module('MainApp.controllers',[]);-
+var controllers=angular.module('MainApp.controllers',[]);
     controllers.controller('HomeController', function ($scope) {
-            $scope.Message = "I nailed it :P";
+            $scope.Message = "Welcome To <b>EScript</b>";
     });
     controllers.controller('AboutUsController', function ($scope) {
             $scope.Message = "About Me? .. Buhahahaha :P";
