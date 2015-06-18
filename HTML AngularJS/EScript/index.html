@@ -20,8 +20,8 @@
     <link rel="stylesheet" type="text/css" href="styles/custom.css" />
 </head>
 <body ng-app="MainApp" style="font-family: Segoe UI;">
-    <!-- head menu bar-->
     <div class="container">
+        <!--Menu Bar Left Fixed-->
         <div class="col-md-2" style="margin-top: 10px;">
             <div class="col-md-12" style="background:#abc !important;">
                 <ul class="nav" style="position: fixed; border: 3px #000 solid; width: 10%;">
@@ -32,9 +32,12 @@
                 </ul>
             </div>
         </div>
+        <!-- End of Menu Bar Left Fixed-->
+        <!-- View-->
         <div class="col-md-10">
             <div ng-view></div>
         </div>
+        <!-- End of View-->
     </div>
     <!--footer-->
 </body>
