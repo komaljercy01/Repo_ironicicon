@@ -1,7 +1,7 @@
 @media screen and (max-width: 300px) {
   .responsive{
     margin-top:200px;
-    
+    margin-left:0%;
   }
   .leftNav{
     width:90%;
