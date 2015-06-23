@@ -1,8 +1,12 @@
 $(document).ready(function(){
+  //Resizing menu bar
   $( window ).resize(function() {
-    alert($( window ).width());
+    if($( window ).width()<975)
+    {
+      $(window).scroll(function() {
+        alert($('.responsive').offset().top);
+       $('.responsive').css('margin-top','50px');
+      });
+    }
   });
-  $(window).scroll(function() {
-    $('.responsive').css('margin-top','50px');
-});
 });
