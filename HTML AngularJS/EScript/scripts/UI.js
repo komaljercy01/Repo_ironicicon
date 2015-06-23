@@ -1,5 +1,5 @@
 $(document).ready(function(){
   $(window).scroll(function() {
-    alert('hello world');
+    $('.responsive').css('margin-top','50px');
 });
 });
