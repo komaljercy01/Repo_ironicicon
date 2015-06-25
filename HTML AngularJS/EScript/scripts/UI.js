@@ -3,7 +3,7 @@ $(document).ready(function(){
   $( window ).resize(function() {
     if($( window ).width()<975)
     {
-      $(window).scroll(function() {
+      $(window).scroll(function(e) {
        $('.responsive').css('margin-top','200px');
        $('.leftNav').css('display','block');
       });
