@@ -10,7 +10,7 @@ var controllers=angular.module('MainApp.controllers',[]);
             $scope.Message = "Enter your Username and password to access the Files";
             $scope.TestMethod=function(user){
                $scope.value=user.username;
-               
+               $window.alert(user.username);
             };
     });
     controllers.controller('ContactUsController', function ($scope) {
