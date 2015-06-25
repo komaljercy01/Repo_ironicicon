@@ -11,7 +11,9 @@
         <p><span class="glyphicon glyphicon-user"></span>{{Message}}</p>
       </div>
       <div class="modal-body">
-        <button class="btn btn-default" ng-click="TestMethod()"></button>
+        <input type="text" ng-modal="user.username" placeholder="enter your username" id="username"></input>
+        <input type="password" ng-modal="user.password" placeholder="enter your password" id="password"></input>
+        <button class="btn btn-default" ng-click="Login(user)">Login</button>
       </div>
       <div class="modal-footer">
         <h4>poda dei</h4>
