@@ -9,7 +9,7 @@ var controllers=angular.module('MainApp.controllers',[]);
     controllers.controller('LoginController', function ($scope) {
             $scope.Message = "Enter your Username and password to access the Files";
             $scope.TestMethod=function(){
-               alert("poda") ;
+               $window.alert("poda") ;
             }
     });
     controllers.controller('ContactUsController', function ($scope) {
