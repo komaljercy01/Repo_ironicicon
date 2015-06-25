@@ -7,7 +7,8 @@ $(document).ready(function(){
       if(e.currentTarget.innerWidth<975)
         {
           $('.responsive').css('margin-top','200px');
-          $('.leftNav').css('display','block');
+          $('.leftNav').css('display','table-row');
+          $('.leftNav').css('display','table-row');
         }
         else
         {
