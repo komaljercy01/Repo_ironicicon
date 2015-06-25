@@ -7,7 +7,10 @@ var controllers=angular.module('MainApp.controllers',[]);
             $scope.Message = "About Me? .. Buhahahaha :P";
     });
     controllers.controller('LoginController', function ($scope) {
-            $scope.Message = "Login ah?.. ada poda";
+            $scope.Message = "Enter your Username and password to access the Files";
+            $scope.TestMethod=function(){
+               alert("poda") ;
+            }
     });
     controllers.controller('ContactUsController', function ($scope) {
             $scope.Message = "Call us or mail us.. but we wont give details";
