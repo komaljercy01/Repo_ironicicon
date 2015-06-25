@@ -13,7 +13,6 @@ $(document).ready(function(){
         {
           $('.responsive').css('margin-top','0px');
         }
-        }
       });
     }
   });
