@@ -6,11 +6,11 @@ var controllers=angular.module('MainApp.controllers',[]);
     controllers.controller('AboutUsController', function ($scope) {
             $scope.Message = "About Me? .. Buhahahaha :P";
     });
-    controllers.controller('LoginController', function ($scope) {
+    controllers.controller('LoginController', function ($scope,$event) {
             $scope.Message = "Enter your Username and password to access the Files";
-            $scope.Login=function(user){
-               $scope.value=user.username;
-               $window.alert(user.username);
+            $scope.Login=function($event){
+               console.log($event);
+               //$window.alert(user.username);
             };
     });
     controllers.controller('ContactUsController', function ($scope) {
