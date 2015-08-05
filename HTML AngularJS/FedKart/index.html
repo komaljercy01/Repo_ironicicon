@@ -1,0 +1,60 @@
+<html>
+<head>
+    <script src="scripts/FactoryScripts/jquery-latest.min.js" type="application/javascript"></script>
+    <script src="scripts/FactoryScripts/bootstrap.min.js" type="application/javascript"></script>
+    <script src="scripts/FactoryScripts/jquery.eventCalendar.min.js" type="application/javascript"></script>
+    <link href="css/eventCalendar.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/eventCalendar_theme_responsive.css" rel="stylesheet">
+    <script>
+	$(document).ready(function() {
+        var eventsInline =[];
+        eventsInline = {"date":"2015-08-01 17:30:00","type":"meeting","title":"Project A meeting","description":"Lorem Ipsum dolor set","url":"http://www.event1.com/"};
+
+		$("#eventCalendarLimit").eventCalendar({
+			jsonData:eventsInline,
+            jsonDateFormat: 'human'
+		});
+        
+        $('#CreateEvent').click(function(e){
+            alert(eventsInline);
+            e.preventDefault();
+            //eventsInline=
+            //eventsInline+='"date":"'+$('#DateTime').val()+'","type":"meeting","title":"'$('#Title').val()+'","description":"'+$('#Desc').val()+'","url":"http://www.google.com"';
+            var _stringedEventsInline=JSON.stringify(eventsInline);
+_stringedEventsInline+='",{"date":"'+$('#DateTime').val()+'","type":"meeting","title":"'+$('#Title').val()+'","description":"'+$('#Desc').val()+'","url":"http://www.google.com"}"';
+            success:function(){
+            $("#eventCalendarLimit").eventCalendar({
+			jsonData:_stringedEventsInline,
+            jsonDateFormat: 'human',
+                success:alert('sucess')
+            }
+		});
+        });
+	});
+</script>
+</head>
+<body>
+<div id="eventCalendarLimit"></div>
+<div class="container">
+    <p class="page-header" style="font-size:20px;text-align:center;">Please schedule a meeting</p>
+    <div class="col-md-8 col-md-offset-4">
+        <div class="col-md-12">
+            <label for="DateTime">Enter the date and Time</label>
+            <input type="text" required placeholder="yyyy-mm-dd hh:mm format" id="DateTime">
+        </div>
+        <div class="col-md-12">
+            <label for="Title">Enter the Title of the meeting</label>
+            <input type="text" required placeholder="Title of the meeting" id="Title">
+        </div>
+        <div class="col-md-12">
+            <label for="Desc">Description</label>
+            <textarea cols="10" required placeholder="Meeting Description" id="Desc"></textarea>
+        </div>
+        <div class="col-md-12">
+            <button class="btn btn-primary" id="CreateEvent" type="submit">Create Event</button>
+        </div>
+    </div>
+</div>
+</body>
+</html>

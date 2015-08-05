@@ -1,0 +1,6 @@
+C:\Users\dell\Desktop\C#\Elance\crap1\obj\Debug\Exco.csprojResolveAssemblyReference.cache
+C:\Users\dell\Desktop\C#\Elance\crap1\bin\Exco.dll
+C:\Users\dell\Desktop\C#\Elance\crap1\bin\Exco.pdb
+C:\Users\dell\Desktop\C#\Elance\crap1\bin\DAL.pdb
+C:\Users\dell\Desktop\C#\Elance\crap1\obj\Debug\Exco.dll
+C:\Users\dell\Desktop\C#\Elance\crap1\obj\Debug\Exco.pdb
