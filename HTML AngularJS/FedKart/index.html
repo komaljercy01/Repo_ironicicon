@@ -21,7 +21,7 @@
 			//eventsInline+='"date":"'+$('#DateTime').val()+'","type":"meeting","title":"'$('#Title').val()+'","description":"'+$('#Desc').val()+'","url":"http://www.google.com"';
     	var _stringedEventsInline=JSON.stringify(eventsInline);
 			_stringedEventsInline+='",{"date":"'+$('#DateTime').val()+'","type":"meeting","title":"'+$('#Title').val()+'","description":"'+$('#Desc').val()+'","url":"http://www.google.com"}"';
-    	success:function(){
+    	success:function(__stringedEventsInline){
   		$("#eventCalendarLimit").eventCalendar({
 				jsonData:_stringedEventsInline,
   			jsonDateFormat: 'human'
