@@ -7,27 +7,28 @@
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/eventCalendar_theme_responsive.css" rel="stylesheet">
     <script>
-	$(document).ready(function() {
-		alert('hello world');
-    var eventsInline =[];
-    eventsInline = {"date":"2015-08-01 17:30:00","type":"meeting","title":"Project A meeting","description":"Lorem Ipsum dolor set","url":"http://www.event1.com/"};
+$(document).ready(function() {
+		var eventsInline =[];
+		eventsInline = {"date":"2015-08-01 17:30:00","type":"meeting","title":"Project A meeting","description":"Lorem Ipsum dolor set","url":"http://www.event1.com/"};
+		
 		$("#eventCalendarLimit").eventCalendar({
 			jsonData:eventsInline,
-      jsonDateFormat: 'human'
+			jsonDateFormat: 'human'
 		});
-  	$('#CreateEvent').click(function(e){
-  		alert(eventsInline);
-    	e.preventDefault();
-    	//eventsInline=
-			//eventsInline+='"date":"'+$('#DateTime').val()+'","type":"meeting","title":"'$('#Title').val()+'","description":"'+$('#Desc').val()+'","url":"http://www.google.com"';
-    	var _stringedEventsInline=JSON.stringify(eventsInline);
-			_stringedEventsInline+='",{"date":"'+$('#DateTime').val()+'","type":"meeting","title":"'+$('#Title').val()+'","description":"'+$('#Desc').val()+'","url":"http://www.google.com"}"';
-    	success:function(__stringedEventsInline){
-  		$("#eventCalendarLimit").eventCalendar({
-				jsonData:_stringedEventsInline,
-  			jsonDateFormat: 'human'
-    	}
-		});
+		$('#CreateEvent').click(function(e){
+			e.preventDefault();
+			var _stringedEventsInline='['+JSON.stringify(eventsInline);
+			_stringedEventsInline+=',{"date":"'+$('#DateTime').val()+'","type":"meeting","title":"'+$('#Title').val()+'","description":"'+$('#Desc').val()+'","url":"http://www.google.com"}]';
+			var def=$.parseJSON(_stringedEventsInline);
+			console.log(def);
+			$.ajax({
+				success : function(def){
+					$("#eventCalendarLimit").eventCalendar({
+						jsonData:def,
+						jsonDateFormat: 'human'
+					});
+				}
+			});			
         });
 	});
 </script>
