@@ -9,43 +9,25 @@
     <script>
 $(document).ready(function() {
 		var eventsInline =[];
-		//eventsInline = {"date":"2015-08-01 17:30:00","type":"meeting","title":"Project A meeting","description":"Lorem Ipsum dolor set","url":"http://www.event1.com/"};
-		eventsInline=[
-    {
-        "date": "2015-08-01 17:30:00",
-        "type": "meeting",
-        "title": "Project A meeting",
-        "description": "Lorem Ipsum dolor set",
-        "url": "http://www.event1.com/"
-    },
-    {
-        "date": "2015-08-15 17:30:00",
-        "type": "meeting",
-        "title": "asdasd",
-        "description": "asdasd",
-        "url": "http://www.google.com"
-    }
-];
-		$("#eventCalendarLimit").eventCalendar({
-			jsonData:eventsInline,
-			jsonDateFormat: 'human'
-		});
+		eventsInline = {"date":"2015-08-01 17:30:00","type":"meeting","title":"Project A meeting","description":"Lorem Ipsum dolor set","url":"http://www.event1.com/"};
 		$('#CreateEvent').click(function(e){
 			e.preventDefault();
 			var _stringedEventsInline='['+JSON.stringify(eventsInline);
 			_stringedEventsInline+=',{"date":"'+$('#DateTime').val()+'","type":"meeting","title":"'+$('#Title').val()+'","description":"'+$('#Desc').val()+'","url":"http://www.google.com"}]';
-			var def=$.parseJSON(_stringedEventsInline);
-			console.log(def);
-			$.ajax({
-				success : function(def){
-					$("#eventCalendarLimit").eventCalendar({
-						jsonData:def,
-						jsonDateFormat: 'human'
-					});
-				}
-			});			
+			eventsInline=$.parseJSON(_stringedEventsInline);
+			//happening twice
+			populateData(eventsInline);
         });
+		populateData(eventsInline);
 	});
+	
+	function populateData(Data)
+	{
+		$("#eventCalendarLimit").eventCalendar({
+			jsonData:Data,
+			jsonDateFormat: 'human'
+		});
+	}
 </script>
 </head>
 <body>
