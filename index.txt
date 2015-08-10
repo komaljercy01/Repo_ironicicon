@@ -12,9 +12,26 @@ namespace DateTime
         static void Main(string[] args)
         {
             //Enter the Date in dd/mm/yyyy format
-            const string _date = "29/02/2013";
+            string _date = "31/08/2011";
             //You will the output
-            Console.Write("Output:" + findDate(_date));
+            for (int i = 0; i < 12; i++)
+            {
+                string[] dateArray = _date.Split('/');
+                int day = int.Parse(dateArray[0]);
+                int month = int.Parse(dateArray[1]);
+                int year = 0;
+                if (int.Parse(_date.Split('/')[1]) == 12)
+                {
+                    year = int.Parse(dateArray[2]) + 1;
+                }
+                else
+                {
+                    year = int.Parse(dateArray[2]);
+                }
+                _date = day.ToString() + "/" + month.ToString() + "/" + year.ToString();
+                _date = findDate(_date);
+                Console.WriteLine("Output:" + _date);
+            }
             Console.ReadKey();
         }
 
@@ -30,22 +47,23 @@ namespace DateTime
                 _month = _date1.Month;
                 _day = _date1.Day;
                 //checking leap year for february alone
+                Dictionary<int, int> _dayMonth = new Dictionary<int, int>() { { 01, 31 }, { 03, 31 }, { 04, 30 }, { 05, 31 }, { 06, 30 }, { 07, 31 }, { 08, 31 }, { 09, 30 }, { 10, 31 }, { 11, 30 }, { 12, 31 } };
+                _dayMonth[2] = _year % 4 == 0 ? 29 : 28;
                 if (_month == 2)
                 {
-                    _sb = FebDateReturn(_year, _month, _day, true);
+                    _sb = FebDateReturn(_year, _month, _dayMonth[2], true);
                 }
                 else
                 {
-                    Dictionary<int, int> _dayMonth = new Dictionary<int, int>() { { 01, 31 }, { 03, 31 }, { 04, 30 }, { 05, 31 }, { 06, 30 }, { 07, 31 }, { 08, 31 }, { 09, 30 }, { 10, 31 }, { 11, 30 }, { 12, 31 } };
                     //case : 31/08/2014 , _dayMonth[08] is 31 and its matching
                     if (_day == _dayMonth[_month])
                     {
-                        _sb.Append(_dayMonth[_month + 1].ToString() + "/" + (_month + 1).ToString() + "/" + _year.ToString());
+                        _sb.Append(_dayMonth[(_month % 12) + 1].ToString() + "/" + ((_month % 12) + 1).ToString() + "/" + _year.ToString());
                     }
                     //case : 19/08/2014 , _dayMonth[08] is 31 and its not matching, end value is 19/09/2014
                     else
                     {
-                        _sb.Append(_day.ToString() + "/" + (_month + 1).ToString() + "/" + _year.ToString());
+                        _sb.Append(_day.ToString() + "/" + ((_month % 12) + 1).ToString() + "/" + _year.ToString());
                     }
                 }
             }
@@ -64,7 +82,7 @@ namespace DateTime
             int dayLimit = isLeapYear ? 29 : 28;
             if (_day == dayLimit)
             {
-                _sb1.Append("28/03/");
+                _sb1.Append(dayLimit+"/3/");
                 _sb1.Append(_year.ToString());
             }
             else
