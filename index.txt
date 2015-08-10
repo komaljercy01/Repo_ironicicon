@@ -1,0 +1,78 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DateTime
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //Enter the Date in dd/mm/yyyy format
+            const string _date = "29/02/2013";
+            //You will the output
+            Console.Write("Output:" + findDate(_date));
+            Console.ReadKey();
+        }
+
+        private static string findDate(string _date)
+        {
+            StringBuilder _sb = new StringBuilder(); int _year; int _month; int _day;
+            try
+            {
+                //do a date tryparse
+                System.DateTime _date1 = System.DateTime.ParseExact(_date, "dd/M/yyyy", CultureInfo.CurrentCulture);
+                //fetch years , day and month
+                _year = _date1.Year;
+                _month = _date1.Month;
+                _day = _date1.Day;
+                //checking leap year for february alone
+                if (_month == 2)
+                {
+                    _sb = FebDateReturn(_year, _month, _day, true);
+                }
+                else
+                {
+                    Dictionary<int, int> _dayMonth = new Dictionary<int, int>() { { 01, 31 }, { 03, 31 }, { 04, 30 }, { 05, 31 }, { 06, 30 }, { 07, 31 }, { 08, 31 }, { 09, 30 }, { 10, 31 }, { 11, 30 }, { 12, 31 } };
+                    //case : 31/08/2014 , _dayMonth[08] is 31 and its matching
+                    if (_day == _dayMonth[_month])
+                    {
+                        _sb.Append(_dayMonth[_month + 1].ToString() + "/" + (_month + 1).ToString() + "/" + _year.ToString());
+                    }
+                    //case : 19/08/2014 , _dayMonth[08] is 31 and its not matching, end value is 19/09/2014
+                    else
+                    {
+                        _sb.Append(_day.ToString() + "/" + (_month + 1).ToString() + "/" + _year.ToString());
+                    }
+                }
+            }
+            catch (FormatException ex)
+            {
+                _year = int.Parse(_date.Split('/')[2]);
+                _sb = FebDateReturn(_year, 2, 28, false);
+            }
+            return _sb.ToString();
+        }
+
+        private static StringBuilder FebDateReturn(int _year, int _month, int _day, bool isLeapYear)
+        {
+            StringBuilder _sb1 = new StringBuilder();
+            //classify = (input > 0) ? "positive" : "negative";
+            int dayLimit = isLeapYear ? 29 : 28;
+            if (_day == dayLimit)
+            {
+                _sb1.Append("28/03/");
+                _sb1.Append(_year.ToString());
+            }
+            else
+            {
+                _sb1.Append(_day.ToString() + "/" + (_month + 1).ToString() + "/" + _year.ToString());
+            }
+            return _sb1;
+        }
+    }
+}
+
