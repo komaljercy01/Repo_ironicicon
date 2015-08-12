@@ -1,4 +1,4 @@
-<html lang="sv">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<title>SimpleCalendar</title>
@@ -12,24 +12,40 @@
 				$('#CreateEvent').click(function(e){
 					e.preventDefault();
 					var enteredDate= $('#DateTime').val();
-					var dayNum=enteredDate.split('-')[1];
+					//2015-08-31
+					var dayNum=enteredDate.split('-')[2];
 					if(dayNum <10)
 					{
-						dayNum=(enteredDate.split('-')[1]).substring(1,2);
+						dayNum=(enteredDate.split('-')[2]).substring(1,2);
 					}
-					var manipulatedDescription= "<div class='day-event' date-month='"+dayNum+"' date-day='"+enteredDate.split('-')[2]+"'><a href='#' class='close fontawesome-remove'></a><h2 class='title'>"+$('#Title').val()+"</h2><p class='date'>"+enteredDate+"</p><p>"+$('#Desc').val()+"</p></div>";
+					var monthNum=enteredDate.split('-')[1];
+					if(monthNum <10)
+					{
+						monthNum=(enteredDate.split('-')[1]).substring(1,2);
+					}
+					var manipulatedDescription= "<div class='day-event' date-month='"+monthNum+"' date-day='"+dayNum+"'><a href='#' class='close fontawesome-remove'></a><h2 class='title'>"+$('#Title').val()+"</h2><p class='date'>"+enteredDate+"</p><p>"+$('#Desc').val()+"</p></div>";
 					
 					//adding class
-					var enteredDateAsDate = new Date(enteredDate);
-					var day=enteredDateAsDate.getDay(); //gives number
-					var whichRow=Math.floor(enteredDate.split('-')[1]/7);
-					//addClass event to show a notification to user
-					if(day+1==7){whichRow=whichRow+1;day=0;}
+					var day=(enteredDate.split('-')[2]%7)-1; //gives number
+					var whichRow=Math.floor(enteredDate.split('-')[2]/7);
+					//addClass event to show a notification to user					
 					$($('.event-calendar')[0].children[whichRow].children[day]).addClass("event");
-					console.log(manipulatedDescription);
 					$('#Cal').append(manipulatedDescription);
 					
 					//do ajax insert / post into the DB
+						var JSONObj=[];
+						var item={};
+						item["date"]=enteredDate;
+						item["title"]=$('#Title').val();
+						item["description"]=$('#Desc').val();
+						item["User"]="user";
+						JSONObj.push(item);
+						/*$.ajax{(
+							url:'http://url.com',
+							method:'post',
+							data:JSON.
+						});*/
+						console.log(JSONObj);
 					});
 			});
 		</script>
