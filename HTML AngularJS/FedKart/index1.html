@@ -28,26 +28,38 @@
 					//adding class
 					var day=(enteredDate.split('-')[2]%7)-1; //gives number
 					var whichRow=Math.floor(enteredDate.split('-')[2]/7);
+					var ticketNumber="";
 					//addClass event to show a notification to user					
 					$($('.event-calendar')[0].children[whichRow].children[day]).addClass("event");
 					$('#Cal').append(manipulatedDescription);
 					
 					//do ajax insert / post into the DB
-						var JSONObj=[];
-						var item={};
-						item["date"]=enteredDate;
-						item["title"]=$('#Title').val();
-						item["description"]=$('#Desc').val();
-						item["User"]="user";
-						JSONObj.push(item);
-						/*$.ajax{(
-							url:'http://url.com',
-							method:'post',
-							data:JSON.
-						});*/
-						console.log(JSONObj);
-						
-						//Done upto Creating JSON Object
+					//https://www.random.org/integers/?num=1&min=1&max=1000000000&col=1&base=10&format=plain&rnd=new
+					var randomNumber=$.get('https://www.random.org/integers/?num=1&min=1&max=1000000000&col=1&base=10&format=plain&rnd=new')
+						.done(function(){
+						//to be actually replaced with a webservice which will fetch the ticket for that particular user
+							ticketNumber=randomNumber.responseText;
+							var JSONObj=[];
+							var item={};
+							item["TicketID"]=ticketNumber;
+							item["date"]=enteredDate;
+							item["title"]=$('#Title').val();
+							item["description"]=$('#Desc').val();
+							item["User"]="user";
+							JSONObj.push(item);
+							/*$.ajax{(
+								url:'http://url.com',
+								method:'post',
+								data:JSON.
+							});*/
+							//Done upto Creating JSON Object
+							//13 September 2015 -- ticket ID creation
+							if(JSONObj!=null)
+							{
+								$('#tktDiv').css('display','block');
+								$('#TicketTxt').html(ticketNumber+" is created successfully. Please click <a href='/anotherLink.html'>here</a> to check the status");
+							}
+						});
 					});
 			});
 		</script>
@@ -110,6 +122,10 @@
 							</div>
 						</div>
 					</form>
+					<div id="tktDiv" style="display:none;margin-top:10px;" class="alert alert-success col-lg-12" role="alert">
+						<span class="glyphicon glyphicon-ok" style="color:green;display:inline;background:transparent;"></span>
+						<p style="padding-left:5px;color:green;font-size:14px;display:inline;" id="TicketTxt"></p>
+					</div>
 				</div>
 			</div>
 		</div>
